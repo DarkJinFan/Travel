@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>拾光旅行馆</title>
+		<link rel="stylesheet" href="../font/iconfont.css" type="text/css">
+		<link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.top{
+				width: 100%;
+				height: 60px;
+				background-color: #c3c3c3;
+				margin: 0px auto;
+				border-bottom: 3px solid #878787;
+			}
+			.top-container{
+				width: 1600px;
+				height: 60px;
+				margin: 0px auto;
+			}
+			.nav>ul>li>a>img{
+				height: 55px;
+			}
+			.nav>ul{
+				list-style: none;
+			}
+			.nav>ul>li{
+				float: left;
+				margin: 0px 3px;
+			}
+			.nav>ul>li:first-child>a{
+				width: 230px;
+				opacity: 1;
+			}
+			.nav>ul>li>a{
+				display: block;
+				width: 80px;
+				height: 55px;
+				line-height: 55px;
+				font-weight: 700;
+				text-decoration: none;
+				color: black;
+				border-top: 5px solid #c3c3c3;
+				transition: 0.3s;
+				opacity: 0.7;
+				font-size: 18px;
+				text-align: center;
+			}
+			.nav>ul>li>a:hover{
+				border-top: 5px solid white;
+				opacity: 1;
+			}
+			.nav-right{
+				width: 500px;
+				height: 60px;
+				float: right;
+			}
+			.search{
+				height: 60px;
+				width: 185px;
+				position: relative;
+				float: right;
+			}
+			.search>input{
+				opacity: 0;
+				width: 1px;
+				height: 25px;
+				transition: 0.3s;
+				position: absolute;
+				left: 20px;
+				top: 15px;
+			}
+			.search>span{
+				position: absolute;
+				left: 0px;
+				line-height: 60px;
+			}
+			.search>span:hover{
+				cursor: pointer;
+			}
+			.nav-right>div:first-child{
+				width: 310px;
+				height: 60px;
+				float: left;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.nav-right>div:first-child>a{
+				text-decoration: none;
+				color: black;
+				transition: 0.3s;
+			}
+			.nav-right>div:first-child>a:hover{
+				transform: scale(1.8);
+				color: red;
+			}
+			.nav-right>div:first-child>span>a{
+				text-decoration: none;
+				color: black;
+				font-size: 20px;
+				transition: 0.3s;
+			}
+			.nav-right>div:first-child>span>a:hover{
+				color: red;
+				font-size: 25px;
+			}
+			.swiper {
+				width: 100%;
+				height: 640px;
+			}
+			.swiper-slide {
+				text-align: center;
+				font-size: 18px;
+				background: #fff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.swiper-slide img {
+				display: block;
+				width: 100%;
+				height: 640px;
+				object-fit: cover;
+			}
+			.autoplay-progress {
+				position: absolute;
+				right: 16px;
+				bottom: 16px;
+				z-index: 10;
+				width: 48px;
+				height: 48px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
+				color: var(--swiper-theme-color);
+			}
+			.autoplay-progress svg {
+				--progress: 0;
+				position: absolute;
+				left: 0;
+				top: 0px;
+				z-index: 10;
+				width: 100%;
+				height: 100%;
+				stroke-width: 4px;
+				/* stroke: var(--swiper-theme-color); */
+				fill: none;
+				stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+				stroke-dasharray: 125.6;
+				transform: rotate(-90deg);
+			}
+			.community{
+				position: relative;
+			}
+			.navshop{
+				position: relative;
+			}
+			.navshop-list{
+				width: 140px;
+				height: 230px;
+				background-image: url(../img/navbg.png);
+				background-size: 140px 230px;
+				position: absolute;
+				top: 65px;
+				left: 0px;
+				z-index: 1000;
+				visibility: hidden;
+				opacity: 0;
+				transition: 0.3s;
+				transform: translateY(-50px);
+			}
+			.community-list{
+				width: 180px;
+				height: 300px;
+				background-image: url(../img/navbg.png);
+				background-size: 180px 300px;
+				position: absolute;
+				top: 65px;
+				left: 0px;
+				z-index: 1001;
+				visibility: hidden;
+				opacity: 0;
+				transition: 0.3s;
+				transform: translateY(-50px);
+			}
+			.community-list>ul{
+				list-style: none;
+				width: 160px;
+				height: 260px;
+				margin: 0px auto;
+				margin-top: 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.navshop-list>ul{
+				list-style: none;
+				width: 115px;
+				height: 190px;
+				margin: 0px auto;
+				margin-top: 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.community-list>ul>li:hover,.navshop-list>ul>li:hover{
+				background-color: #e3fae1;
+			}
+			
+			.community-list>ul>li>a,.navshop-list>ul>li>a{
+				text-decoration: none;
+				color: black;
+				font-size: 17px;
+			}
+			.banner{
+				position: relative;
+			}
+			.banner-container{
+				width: 800px;
+				height: 130px;
+				background-color: RGBA(255,255,255,0.2);
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				margin: auto;
+				z-index: 999;
+				border-radius: 10px;
+				border: 1px solid RGBA(255,255,255,0.2);
+				backdrop-filter: blur(3px);
+				display: flex;
+				flex-direction: column;
+			}
+			.banner-container>div>div{
+				width: 200px;
+				height: 65px;
+				background-color: #878787;
+				float: left;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+			
+			.banner-container-bgcolor{
+				background-image: linear-gradient(90deg,rgba(40,213,164,.8),rgba(38,208,181,.8));
+			}
+			.banner-container>div>div>a{
+				display: block;
+				width: 200px;
+				height: 65px;
+				text-align: center;
+				line-height: 65px;
+				text-decoration: none;
+				font-size: 20px;
+				color: white;
+				opacity: 0.7;
+			}
+			.banner-container-bottom>input{
+				float: left;
+				width: 580px;
+				height: 50px;
+				border-radius: 10px;
+				border: 1px solid rgba(255, 0, 0, 0.5);
+				margin-top: 6px;
+				margin-left: 10px;
+				background-color: RGBA(255,255,255,0.8);
+			}
+			.banner-container-bottom>a{
+				display: block;
+				width: 180px;
+				height: 50px;
+				border: 2px solid white;
+				float: left;
+				margin-top: 6px;
+				margin-left: 15px;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 18px;
+				font-weight: 700;
+				text-decoration: none;
+				color: white;
+				transition: 0.5s;
+			}
+			.banner-container-bottom>a:hover{
+				background-color: white;
+				color: black;
+				border: 2px solid black;
+			}
+			.banner-container-bottom{
+				width: 100%;
+				height: 65px;
+				background-image: linear-gradient(90deg,rgba(21,219,145,.8),rgba(6,204,199,.8));
+			}
+			.phone{
+				width: 100%;
+				height: 150px;
+				background-color: #ececec;
+				margin: 20px 0px;
+				display: flex;
+				align-items: center;
+			}
+			.phone>div{
+				width: 1180px;
+				height: 110px;
+				margin: 0px auto;
+				display: flex;
+				justify-content: center;
+			}
+			.phone>div>img{
+				height: 105px;
+				margin: 0px 10px;
+			}
+			.TodayRecommend{
+				width: 1180px;
+				height: 700px;
+				/* background-color: pink; */
+				margin: 30px auto 50px auto;
+			}
+			.TodayRecommend>h1{
+				text-align: center;
+				font-size: 40px;
+			}
+			.TodayRecommend>div{
+				width: 1180px;
+				height: 650px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-content: space-around;
+			}
+			.TodayRecommend>div>div{
+				width: 275px;
+				height: 300px;
+				background-color: white;
+				border: 1px solid rgba(156, 156, 156, 0.2);
+				transition: 0.5s;
+				overflow: hidden;
+				position: relative;
+			}
+			.TodayRecommend>div>div:hover{
+				cursor: pointer;
+				color: green;
+			}
+			.TodayRecommend>div>div>div{
+				width: 275px;
+				height: 185px;
+				transition: 0.5s;
+			}
+			.TodayRecommend>div>div>div>img{
+				width: 275px;
+				height: 185px;
+			}
+			.TodayRecommend>div>div>p{
+				text-align: center;
+				margin: 15px 25px;
+				font-weight: 700;
+			}
+			.TodayRecommend>div>div>span{
+				font-weight: 700;
+				color: rgba(66, 66, 66, 0.8);
+				float: left;
+				margin-left: 10px;
+				display: block;
+				width: 130px;
+				height: 20px;
+				overflow: hidden;
+			}
+			.TodayRecommend>div>div>div>span{
+				color: gray;
+				opacity: 0.8;
+				float: right;
+				margin-right: 10px;
+				color: rgba(122, 122, 122, 0.8);
+				font-weight: 600;
+			}
+			.TodayRecommend>div>div>div>span>a{
+				color: red;
+				font-size: 25px;
+				font-weight: 700;
+				display: inline-block;
+				margin-top: -7px;
+			}
+			.TodayRecommend>div>div>a{
+				display: block;
+				text-align: center;
+				width: 130px;
+				height: 20px;
+				background-color: red;
+				border-radius: 5px;
+				text-decoration: none;
+				color: white;
+				margin-left: 25px;
+			}
+			.ContainerShop{
+				width: 100%;
+				height: 540px;
+				background-image: linear-gradient(180deg,#1bcdae,#6dd27c);
+			}
+			.ContainerShop>div{
+				width: 1180px;
+				height: 540px;
+				margin: 0px auto;
+				display: flow-root;
+				position: relative;
+			}
+			.ContainerShop>div>h1{
+				text-align: center;
+				margin: 10px 0px;
+				color: white;
+			}
+			.ContainerShop>div>div{
+				width: 1180px;
+				height: 380px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-content: space-around;
+			}
+			.ContainerShop>div>div>div{
+				width: 375px;
+				height: 160px;
+				transition: 0.5s;
+			}
+			.ContainerShop>div>div>div:hover{
+				cursor: pointer;
+			}
+			.ContainerShop>div>div>div>img{
+				width: 160px;
+				height: 160px;
+				float: left;
+			}
+			.ContainerShop>div>div>div>div{
+				width: 215px;
+				height: 160px;
+				background-color: white;
+				float: right;
+			}
+			.ContainerShop>div>div>div>div>p{
+				text-align: center;
+				margin: 5px 20px;
+				font-weight: 700;
+				font-size: 18px;
+				color: black;
+				transition: 0.5s;
+			}
+			.ContainerShop>div>div>div>div>a{
+				display: inline-block;
+				margin: 5px 25px;
+				border: 1px solid #4a90e2;
+				color: #4a90e2;
+				transition: 0.5s;
+			}
+			.ContainerShop>div>div>div>div>span{
+				width: 190px;
+				display: block;
+				text-align: right;
+				margin: 10px 0px;
+				font-size: 25px;
+				color: #ff7362;
+				font-weight: 600;
+				transition: 0.5s;
+			}
+			.ContainerShop>div>a{
+				display: block;
+				width: 220px;
+				height: 50px;
+				background-color: RGBA(255,255,255,0.5);
+				text-align: center;
+				line-height: 50px;
+				margin: 20px auto;
+				text-decoration: none;
+				color: rgb(90, 90, 90);
+				font-size: 25px;
+				font-weight: 700;
+				border-radius: 10px;
+				transition: 0.3s;
+			}
+			.ContainerShop>div>a:hover{
+				box-shadow: 2px 2px 5px RGBA(0,0,0,0.5);
+				font-size: 30px;
+				background-color: RGBA(255,255,255,1);
+			}
+			.ContainerShop>div>span{
+				position: absolute;
+				top: 50px;
+				right: 20px;
+			}
+			.ContainerShop>div>span:hover{
+				cursor: pointer;
+			}
+			.HotContainer{
+				width: 100%;
+				height: 870px;
+				margin: 30px 0px 0px 0px;
+			}
+			.HotContainer>div>h1{
+				text-align: center;
+				margin: 20px 20px;
+			}
+			.HotContainer>div{
+				width: 1180px;
+				height: 870px;
+				margin: 0px auto;
+				display: flow-root;
+			}
+			.Hotbox{
+				width: 1180px;
+				height: 620px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-content: space-around;
+			}
+			.Hotbox>div{
+				width: 275px;
+				height: 290px;
+				background-color: white;
+				position: relative;
+				border: 1px solid RGBA(0,0,0,0.1);
+				transition: 0.2s;
+			}
+			.Hotbox>div:hover{
+				cursor: pointer;
+			}
+			.Hotbox>div>img{
+				width: 275px;
+				height: 185px;
+			}
+			.Hotbox>div>div{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				position: absolute;
+				top: 155px;
+				left: 25px;
+				border: 5px solid white;
+			}
+			.Hotbox>div>div>img{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			.Hotbox>div>span{
+				margin-left: 95px;
+			}
+			.Hotbox>div>p{
+				text-align: center;
+				font-weight: 700;
+				margin: 20px;
+			}
+			
+			.HotContainer-list{
+				width: 420px;
+				height: 10px;
+				margin: 40px auto;
+			}
+			.HotContainer-list>ul{
+				list-style: none;
+				width: 420px;
+				height: 10px;
+				display: flex;
+				justify-content: space-around;
+			}
+			.HotContainer-list>ul>li{
+				width: 30px;
+				height: 10px;
+				background-color: #6c6c6c;
+			}
+			.HotContainer-list>ul>li>span{
+				display: block;
+				width: 30px;
+				height: 10px;
+				transition: 0.3s;
+			}
+			.HotContainer-list>ul>li>span:hover{
+				cursor: pointer;
+			}
+			.hovered{
+				background-color: #1ab05f;
+			}
+			.HotContainer>div>a{
+				display: block;
+				width: 220px;
+				height: 50px;
+				text-align: center;
+				text-decoration: none;
+				color: #636363;
+				box-shadow: 0 0 5px rgba(0,0,0,0.2);
+				line-height: 50px;
+				font-size: 25px;
+				border-radius: 10px;
+				margin: 0px auto;
+				transition: 0.3s;
+				font-weight: 500;
+			}
+			.HotContainer>div>a:hover{
+				background-color: RGBA(0,0,0,0.8);
+				color: white;
+				font-weight: 700;
+			}
+			.Feel{
+				width: 100%;
+				height: 480px;
+				background-color: #ececec;
+				
+			}
+			.Feel>div{
+				width: 1180px;
+				height: 480px;
+				margin: 0px auto;
+				display: flow-root;
+				display: flex;
+				justify-content: space-between;
+			}
+			.Feel>div>div:first-child{
+				width: 270px;
+				height: 440px;
+				margin-left: 20px;
+				display: flow-root;
+			}
+			.Feel>div>div:first-child>h2{
+				margin: 20px 0px 5px 10px;
+			}
+			.Feel>div>div:first-child>div{
+				width: 270px;
+				height: 300px;
+				background-color: white;
+			}
+			.Feel>div>div:first-child>div>img{
+				width: 270px;
+			}
+			.Feel>div>div:first-child>div>a{
+				display: block;
+				width: 200px;
+				height: 40px;
+				background-color: RGBA(0,0,0,0.3);
+				text-align: center;
+				margin: 0px auto;
+				line-height: 40px;
+				text-decoration: none;
+				color: black;
+				border-radius: 10px;
+				margin-top: 10px;
+				transition: 0.5s;
+			}
+			.Feel>div>div:first-child>div>a:hover{
+				background-color: #ececec;
+				color: gray;
+			}
+			.Feel>div>div:first-child>a{
+				text-decoration: none;
+				display: block;
+				width: 265px;
+				height: 50px;
+				margin: 1px auto;
+				text-align: center;
+				line-height: 50px;
+				border: 1px solid #3cbd79;
+				color: #3cbd79;
+				font-size: 30px;
+				font-weight: 600;
+				letter-spacing: 15px;
+				margin-top: 20px;
+				transition: 0.5s;
+			}
+			.Feel>div>div:first-child>a:hover{
+				background-color: beige;
+				border: 1px solid beige;
+				color: black;
+			}
+			.Feel>div>div:last-child{
+				width: 870px;
+				height: 440px;
+			}
+			.Feel>div>div:last-child>h2{
+				margin: 20px 0px 0px 20px;
+				display: inline-block;
+			}
+			.Feel>div>div:last-child>a{
+				float: right;
+				font-size: 22px;
+				color: RGBA(0,0,0,0.4);
+				margin-top: 20px;
+				margin-right: 20px;
+				text-align: center;
+				text-decoration: none;
+			}
+			.Feel>div>div:last-child>a:hover{
+				color: #3cbd79;
+			}
+			.spl>div:first-child{
+				width: 270px;
+				height: 390px;
+				float: left;
+				margin-top: 6px;
+			}
+			.spl>div:first-child>img{
+				width: 270px;
+				height: 382px;
+			}
+			.spl>div:nth-child(2),.spl>div:nth-child(3),.spl>div:nth-child(4),.spl>div:nth-child(5){
+				width: 270px;
+				height: 180px;
+				float: left;
+				margin-left: 20px;
+				margin-bottom: 28px;
+			}
+			.spl>div:nth-child(2)>img,.spl>div:nth-child(3)>img,.spl>div:nth-child(4)>img,.spl>div:nth-child(5)>img{
+				width: 270px;
+				height: 180px;
+			}
+			.biu{
+				width: 1180px;
+				height: 1000px;
+				margin: 0px auto;
+				display: flow-root;
+			}
+			.biu>h2{
+				margin: 20px 0px 0px 20px;
+				font-size: 30px;
+			}
+			.biu>ul{
+				width: 1180px;
+				height: 930px;
+				list-style: none;
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				align-content: space-around;
+			}
+			.biu>ul>li{
+				width: 270px;
+				height: 270px;
+				display: block;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0px 0px 10px RGBA(0,0,0,0.5);
+				position: relative;
+			}
+			.biu>ul>li>a{
+				text-decoration: none;
+			}
+			.biu>ul>li>a>img{
+				width: 270px;
+				height: 270px;
+			}
+			.biu>ul>li>p{
+				display: block;
+				width: 270px;
+				height: 270px;
+				background-color: RGBA(0,0,0,0.6);
+				position: absolute;
+				top: 270px;
+				left: 0px;
+				transition: 0.3s;
+				overflow: hidden;
+			}
+			.biu>ul>li>p>span:first-child{
+				margin: 15px 0px;
+				text-align: center;
+				display: block;
+				color: white;
+				font-size: 20px;
+				font-weight: 700;
+			}
+			.biu>ul>li>p>span:last-child{
+				color: white;
+				text-align: center;
+				display: block;
+				line-height: 30px;
+				margin: 0px 20px;
+			}
+			.centerhelp{
+				border-top: 3px #1ab05f solid;
+				width: 100%;
+				height: 230px;
+				background-color: #323232;
+			}
+			.centerhelp>div{
+				width: 1180px;
+				height: 230px;
+				margin: 0px auto;
+			}
+			.centerhelp>div>table{
+				width: 620px;
+				height: 180px;
+				text-align: center;
+				margin-top: 20px;
+			}
+			.centerhelp>div>table tr>th{
+				color: silver;
+			}
+			.centerhelp>div>table tr>td{
+				transition: 0.5s;
+				color: #959595;
+			}
+			.centerhelp>div>table tr>td:hover{
+				color: silver;
+				cursor: pointer;
+			}
+			.endbottom{
+				width: 100%;
+				height: 160px;
+				background-color: #242424;
+			}
+			.endbottom>div{
+				width: 1180px;
+				height: 160px;
+				margin: 0px auto;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-content: center;
+				color: white;
+			}
+			.endbottom>div>p{
+				letter-spacing: 3px;
+			}
+			.endbottom>div>p>a{
+				text-decoration: none;
+				color: white;
+			}
+			.topbtn{
+				width: 80px;
+				height: 80px;
+				position: fixed;
+				right: 100px;
+				bottom: 100px;
+				background-color: white;
+				box-shadow: 0px 0px 10px black;
+				visibility: hidden;
+				transition: 0.2s;
+			}
+			.topbtn>a{
+				text-align: center;
+				display: block;
+				width: 80px;
+				height: 80px;
+				margin-top: 10px;
+			}
+			.topbtn>a>img{
+				width: 60px;
+				height: 60px;
+			}
+			.advertisement{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				z-index: 10000;
+				width: 320px;
+				height: 240px;
+				animation-name: move;
+				animation-duration: 10s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			.advertisement>div{
+				width: 40px;
+				height: 40px;
+				background-image: url(../img/close.png);
+				background-position: 0px 0px;
+				background-size: 40px 40px;
+				z-index: 10086;
+				position: relative;
+				top: -244px;
+				right: -280px;
+			}
+			.advertisement>div:hover{
+				cursor: pointer;
+			}
+			@keyframes move{
+				0%{
+					top: 200px;
+					left: 200px;
+				}
+				20%{
+					top: 500px;
+					left: 500px;
+				}
+				40%{
+					top: 300px;
+					left: 1400px;
+				}
+				60%{
+					top: 0px;
+					left: 500px;
+				}
+				80%{
+					top: 500px;
+					left: 300px;
+				}
+				100%{
+					top: 300px;
+					left: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="All">
+			<div class="top" id="tp">
+				<div class="top-container">
+					<div class="nav">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="../img/logo.png">
+								</a>
+							</li>
+							<li>
+								<a href="#">目的地</a>
+							</li>
+							<li>
+								<a href="#">锦囊</a>
+							</li>
+							<li  class="community">
+								<a href="#">
+									社区
+									<span class="iconfont icon-xiala"></span>
+								</a>
+								<div class="community-list">
+									<ul>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-luntan"></span>
+												旅行论坛
+												<span class="iconfont icon-youla"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-wenda"></span>
+												旅行问答
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-tianjiazhuanlan_chuangjianzhuanlan"></span>
+												旅行专栏
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-Biu"></span>
+												旅行分享
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-jne"></span>
+												JNE旅行生活美学
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-hezuohuoban"></span>
+												结伴同游
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-fuzeren"></span>
+												负责任的旅行
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-xuanticehua"></span>
+												特别策划
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-shipin"></span>
+												旅行精选视频
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#">行程助手</a>
+							</li>
+							<li class="navshop">
+								<a href="#">
+									商城
+									<span class="iconfont icon-xiala"></span>
+								</a>
+								<div class="navshop-list">
+									<ul>
+										<li>
+											<span class="iconfont icon-gongwenbao"></span>
+											<a href="#">机酒自由行</a>
+										</li>
+										<li>
+											<span class="iconfont icon-qizhi"></span>
+											<a href="#">当地玩乐</a>
+										</li>
+										<li>
+											<span class="iconfont icon-qianzheng"></span>
+											<a href="#">签证</a>
+										</li>
+										<li>
+											<span class="iconfont icon-baoxiandingdan"></span>
+											<a href="#">保险</a>
+										</li>
+										<li>
+											<span class="iconfont icon-youlun"></span>
+											<a href="#">邮轮</a>
+										</li>
+										<li>
+											<span class="iconfont icon-tubiaolunkuohua11"></span>
+											<a href="#">私人定制</a>
+										</li>
+										<li>
+											<span class="iconfont icon-icon-test"></span>
+											<a href="#">欧洲铁路</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#">酒店·民宿</a>
+							</li>
+							<li>
+								<a href="#">保险</a>
+							</li>
+						</ul>
+					</div>
+					<div class="nav-right">
+						<div>
+							<a href= "https://www.taobao.com/" target="_blank">
+								<span class="iconfont icon-tao" style="color: red;"></span>
+							</a>
+							<a href= "https://im.qq.com/index/" target="_blank">
+								<span class="iconfont icon-QQ"></span>
+							</a>
+							<a href= "https://weixin.qq.com/" target="_blank">
+								<span class="iconfont icon-weixin"></span>
+							</a>
+							<a href= "https://weibo.com" target="_blank">
+								<span class="iconfont icon-weibo"></span>
+							</a>
+							<span>
+								<a href="register.html">注册</a>
+							</span>
+							<span>
+								<a href="login.html">登录</a>
+							</span>
+						</div>
+						<div class="search">
+							<input type="text">
+							<span class="iconfont icon-sousuo"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="banner">
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="../img/banner1.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner2.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner3.jpg">	
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner4.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner5.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner6.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner7.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner8.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner9.jpeg">
+						</div>
+						<div class="swiper-slide">
+							<img src="../img/banner10.jpeg">
+						</div>
+					</div>
+				    <div class="swiper-button-next">
+						
+					</div>
+				    <div class="swiper-button-prev">
+						
+					</div>
+				    <div class="swiper-pagination">
+						
+					</div>
+				    <div class="autoplay-progress">
+						<svg viewBox="0 0 48 48">
+							<circle cx="24" cy="24" r="20"></circle>
+						</svg>
+						<span></span>
+					</div>
+				</div>
+				<div class="banner-container">
+					<div class="banner-container-top">
+						<div class="banner-container-bgcolor">
+							<a href="#">
+								<span class="iconfont icon-gonglve"></span>
+								看攻略
+							</a>
+						</div>
+						<div>
+							<a href="#">
+								<span class="iconfont icon-hangcheng"></span>
+								做行程
+							</a>
+						</div>
+						<div>
+							<a href="#">
+								<span class="iconfont icon-jiudian"></span>
+								特价酒店
+							</a>
+						</div>
+						<div>
+							<a href="#">
+								<span class="iconfont icon-baoxiandingdan"></span>
+								出行保险
+							</a>
+						</div>
+					</div>
+					<div class="banner-container-bottom">
+						<input type="text" placeholder="搜目的地/主题攻略/问题">
+						<a href="#">
+							<span class="iconfont icon-sousuo"></span>
+							搜索旅行攻略
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="phone">
+				<div>
+					<img src="../img/phone.jpg">
+					<img src="../img/phone2.jpg">
+				</div>
+			</div>
+			<div class="TodayRecommend">
+				<h1>今日推荐</h1>
+				<div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg1.jpg">
+						</div>
+						<p>【春节/五一】上海直飞日本大阪东京名古屋/仙台/长崎/广岛</p>
+						<span>上海</span>
+						<div>
+							<span>
+								<a>1399</a>元起
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg2.gif">
+						</div>
+						<p>周末江阴Citywalk，就选这条路线！ 江阴，徐霞客的故乡</p>
+						<span>小肉团很折腾</span>
+						<div>
+							<span style="font-size: 13px;">
+								22赞
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg3.jpg">
+						</div>
+						<p>加勒|永不消散的夏日阳光，在消亡中创造生命</p>
+						<span>chalffy</span>
+						<div>
+							<span style="font-size: 13px;">
+								236565万人浏览过
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg4.jpg">
+						</div>
+						<p>[定制游]全国往返中亚三国12日自由行</p>
+						<span>北京、上海、深圳沈阳...</span>
+						<div>
+							<span>
+								<a>1399</a>元起
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg5.jpg">
+						</div>
+						<p>【苏游记】梦里水乡(泰州、扬州、南京)</p>
+						<span>蓝芷</span>
+						<div>
+							<span style="font-size: 13px;">
+								7652人浏览过
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg6.jpg">
+						</div>
+						<p>【蓝门之外，绿野之上】伊宁人文与伊犁河谷的双重奏</p>
+						<span>Yoki黄元琪</span>
+						<div>
+							<span style="font-size: 13px;">
+								26486人浏览过
+							</span>
+						</div>
+					</div>
+					<div class= "">
+						<div>
+							<img src="../img/recommendimg7.jpg">
+						</div>
+						<p>【加勒比海跳岛记】传说中的A岛和C岛，未知海岛的独处时光</p>
+						<span>st-dolly</span>
+						<div>
+							<span style="font-size: 13px;">
+								13486人浏览过
+							</span>
+						</div>
+					</div>
+					<div style="background-color: rgb(255, 237, 234);">
+						<div>
+							<img src="../img/recommendimg8.jpg">
+						</div>
+						<p style="text-align: left;margin: 20px 0px 0px 25px;">冲绳-穷游锦囊</p>
+						<p style="text-align: left;margin: 5px 25px;">Okinawa</p>
+						<a href="#">￥1.00 下载阅读</a>
+					</div>
+				</div>
+			</div>
+			<div class="ContainerShop">
+				<div>
+					<h1>穷游商城</h1>
+					<span>点击换一换</span>
+					<div>
+						<div>
+							<img src="../img/shop1.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<img src="../img/shop2.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<img src="../img/shop3.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<img src="../img/shop4.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<img src="../img/shop5.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<img src="../img/shop6.jpg">
+							<div>
+								<p></p>
+								<a>自营套餐</a>
+								<span></span>
+							</div>
+						</div>
+					</div>
+					<a href="#">查看更多商品</a>
+				</div>
+			</div>
+			<div class="HotContainer">
+				<div>
+					<h1>热门游记与话题</h1>
+					<div class="Hotbox">
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+						<div>
+							<img>
+							<div>
+								<img>
+							</div>
+							<span></span>
+							<p></p>
+						</div>
+					</div>
+					<div class="HotContainer-list">
+						<ul>
+							<li>
+								<span data-list="0"></span>
+							</li>
+							<li>
+								<span data-list="1"></span>
+							</li>
+							<li>
+								<span data-list="2"></span>
+							</li>
+							<li>
+								<span data-list="3"></span>
+							</li>
+							<li>
+								<span data-list="4"></span>
+							</li>
+							<li>
+								<span data-list="5"></span>
+							</li>
+							<li>
+								<span data-list="6"></span>
+							</li>
+							<li>
+								<span data-list="7"></span>
+							</li>
+							<li>
+								<span data-list="8"></span>
+							</li>
+							<li>
+								<span data-list="9"></span>
+							</li>
+							<li>
+								<span data-list="10"></span>
+							</li>
+							<li>
+								<span data-list="11"></span>
+							</li>
+						</ul>
+					</div>
+					<a href="#">查看更多游记</a>
+				</div>
+			</div>
+			<div class="Feel">
+				<div>
+					<div>
+						<h2>穷游体验馆</h2>
+						<div>
+							<img src="../img/feelimg1.png">
+							<h2 style="font-weight: initial;margin-left: 20px;">守护海洋行动者招募</h2>
+							<p style="margin-left: 20px;font-weight: 600;margin-top: 20px;">体验三天六晚自由行</p>
+							<a href="#">点击查看</a>
+						</div>
+						<a href="#">查看往期</a>
+					</div>
+					<div>
+						<h2>特别策划</h2>
+						<a href="#">查看全部></a>
+						<div class="spl">
+							<div>
+								<img src="../img/feelimg.jpg">
+							</div>
+							<div>
+								<img src="../img/feelimg2.jpg">
+							</div>
+							<div>
+								<img src="../img/feelimg4.jpg">
+							</div>
+							<div>
+								<img src="../img/feelimg3.jpg">
+							</div>
+							<div>
+								<img src="../img/feelimg5.jpg">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="biu">
+				<h2>Biu!Biu!</h2>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="../img/biu1.jpg" data-biuindex="0">
+						</a>
+						<p>
+							<span>石屏文庙👥</span>
+							<span>一场穿越时光的人文之旅亲爱的旅友们，我是你们的导游薛老师，今天带大家云游石屏文庙，开启一场古韵四溢的旅程。</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu2.gif" data-biuindex="1">
+						</a>
+						<p>
+							<span>巴西玛瑙斯歌剧院</span>
+							<span>巴西玛瑙斯歌剧院（Teatro Amazonas），又称亚马逊剧院，是一座位于巴西亚马逊雨林中心城市玛瑙斯的标志性建筑。歌剧院始建于1884年...</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu3.png" data-biuindex="2">
+						</a>
+						<p>
+							<span>尼泊尔小物件分享</span>
+							<span>尼泊尔小物件分享|30+直男购物防骗指南克什米尔羊毛的水比菩提子还深至少具备一定的义乌货识别能力上好的廓尔喀JD运费可能比本值还高✓</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu4.jpg" data-biuindex="3">
+						</a>
+						<p>
+							<span>奇趣新派印度料理📸</span>
+							<span>从此🇲🇴来澳门又多了一个🆕无法拒绝的理由🍴这一次来澳门我挖到一个全新🆕神仙美食地一次就🉑吃遍整个亚洲🔥人气美食餐厅的快乐谁懂⁉万众瞩目的🇲🇴永利皇宫🥢馥乐庭餐厅率先亮相🎊作为首批食客</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu5.jpg" data-biuindex="4">
+						</a>
+						<p>
+							<span>天空之境☁️</span>
+							<span>初春，正是踏春🍃出游的好季节，你是否已经计划好了出游路线？最近打卡了🤳杭州周边一处宝藏景点，不仅拍到了人生照片📷还邂逅了漫山遍野的樱花🌸哦！</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu6.jpg" data-biuindex="5">
+						</a>
+						<p>
+							<span>元宝柚</span>
+							<span>作为玉林市的市辖县，容县古称“容州”，在唐代的时候作为岭南五大军事中心之一,真武阁作为江南四大名楼之一,古城外还有当地特产沙田柚售卖，我手里这个品种叫做“元宝柚”，是不是很大</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu7.jpg" data-biuindex="6">
+						</a>
+						<p>
+							<span>山西热门景点整理📍</span>
+							<span>大同：云冈石窟、悬空寺、善化寺、代王府、恒山等📍忻州：五台山、雁门关、忻州古城、老牛湾等📍朔州：应县木塔、崇福寺、净土寺等📍临汾：壶口瀑布、洪洞大槐树、广胜寺、小西天等...</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu8.jpg" data-biuindex="7">
+						</a>
+						<p>
+							<span>🚩𝘾𝙞𝙩𝙮𝙒𝙖𝙡𝙠</span>
+							<span>旺角citywalk直接复制这条路线！香港旺角的烟火气 就是港风的代名词吧从早到晚 可以打卡所期待的港风浪漫地道的街市 拥挤的高楼巷子和霓虹灯牌每一帧都像是王家卫电影里的画面·这一篇旺角citywalk攻略</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu9.jpg" data-biuindex="8">
+						</a>
+						<p>
+							<span>穷鬼的快乐天堂👀</span>
+							<span>太升路巷子惊烧肉刺客！穷鬼的快乐天堂！！本地人带路才找到的烧肉食堂‼️✔️XXXL抹茶珍奶：珍珠Q到能打乒乓球，抹茶🍵浓郁秒解腻，建议人手一杯👌</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu10.jpg" data-biuindex="9">
+						</a>
+						<p>
+							<span>偶遇《绿野仙踪》☑️</span>
+							<span>周末在多伦市集偶遇了《绿野仙踪》！ 多伦市集也太会了吧！边走边看剧，和小朋友度过了一个神奇的周末。 整个市集被绿野仙境氛围环绕猫头鹰🦉魔法屋水晶球🔮等等，随手一拍就很酷炫！很出片！ </span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu11.jpg" data-biuindex="10">
+						</a>
+						<p>
+							<span>海景拍照酒店天花板🌊</span>
+							<span>在陵水找到了海景拍照酒店天花板🌊这次来陵水度假选到了宝藏酒店它家虽然主打亲子但拍照真的无敌好看房间穿过白色礼堂的直通沙滩椰林大海 真的太美好了来海南好多次它家沙滩是我见过最细最软的了人也少</span>
+						</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../img/biu12.jpg" data-biuindex="11">
+						</a>
+						<p>
+							<span>✨必看 ✨九寨沟攻略</span>
+							<span>一生必去的人间仙境！超详细游玩攻略来啦🌈💖前期准备💖1️⃣ 门票🎫：提前在官网或公众号预订哦2️⃣ 衣物🧥：根据天气准备保暖衣物，羽绒服、冲锋衣必备3️⃣ 防晒用品🌞：防晒霜、太阳镜、遮阳帽都要带上...</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="centerhelp">
+				<div>
+					<table>
+						<tr>
+							<th>关于我们</th>
+							<th>加入我们</th>
+							<th>网站条款</th>
+							<th>帮助中心</th>
+						</tr>
+						<tr>
+							<td>简介</td>
+							<td>招聘职位</td>
+							<td>会员条款</td>
+							<td>新手上路</td>
+						</tr>
+						<tr>
+							<td>联系我们</td>
+							<td></td>
+							<td>社区指南</td>
+							<td>使用帮助</td>
+						</tr>
+						<tr>
+							<td>合作伙伴</td>
+							<td></td>
+							<td>版权声明</td>
+							<td>网站地图</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>免责声明</td>
+							<td>旅行工具</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="endbottom">
+				<div>
+					<p>COPY © 穷游网 | 京ICP 备20250525 号 营业执照 经营许可证</p>
+					<p>
+						友情链接:
+						<a href="#">国际租车</a>|
+						<a href="#">大自驾网</a>|
+						<a href="#">凤凰古城住宿推荐</a>|
+						<a href="#">信息聚合</a>|
+						<a href="#">神州租车</a>|
+						<a href="#">签证资讯网</a>|
+						<a href="#">同城旅游</a>|
+						<a href="#">相约久久网</a>|
+						<a href="#">火车票</a>|
+						<a href="#">多多驿站</a>
+					</p>
+				</div>
+			</div>
+			<div class="topbtn">
+				<a href="#tp">
+					<img src="../img/up.png">
+				</a>
+			</div>
+			<div class="advertisement">
+				<img src="../img/advertisement.gif">
+				<div>
+					
+				</div>
+			</div>
+		</div>
+		<script src="../js/swiper-bundle.js"></script>
+		<script type="text/javascript">
+			const progressCircle = document.querySelector(".autoplay-progress svg");
+			const progressContent = document.querySelector(".autoplay-progress span");
+			var swiper = new Swiper(".mySwiper", {
+				spaceBetween: 30,
+				centeredSlides: true,
+				autoplay: {
+				delay: 2500,
+			    disableOnInteraction: false
+			},
+				pagination: {
+				el: ".swiper-pagination",
+				clickable: true
+			},
+				navigation: {
+			    nextEl: ".swiper-button-next",
+			    prevEl: ".swiper-button-prev"
+			    },
+			on: {
+				autoplayTimeLeft(s, time, progress) {
+					progressCircle.style.setProperty("--progress", 1 - progress);
+					// progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+			    }
+			}
+			});
+			let searchspan= document.querySelector(".search>span");
+			let searchtext= searchspan.previousElementSibling;
+			searchspan.addEventListener("mouseenter",function (){
+				setTimeout(function (){
+					searchtext.style.opacity= "1";
+					searchtext.style.width= "160px";
+				},100);
+				
+			});
+			searchtext.addEventListener("blur",function (){
+				setTimeout(function (){
+					searchtext.style.opacity= "0";
+					searchtext.style.width= "1px";
+				},50);
+			});
+			let communitylist= document.querySelector(".community-list");
+			let navli= document.querySelectorAll(".nav>ul>li");
+			navli[3].addEventListener("mouseenter",function (){
+				communitylist.style.visibility= "visible";
+				communitylist.style.opacity= "1";
+				communitylist.style.transform= "translateY(0px)";
+			});
+			
+			navli[3].addEventListener("mouseleave",function (){
+				let navflag= true;
+				communitylist.addEventListener("mousemove",function (){
+					navflag= false;
+				});
+				setTimeout(function (){
+					if(navflag){
+						communitylist.style.visibility= "hidden";
+						communitylist.style.opacity= "0";
+						communitylist.style.transform= "translateY(-50px)";
+					}
+				},150);
+			});
+			let navshoplist= document.querySelector(".navshop-list");
+			navli[5].addEventListener("mouseenter",function (){
+				navshoplist.style.visibility= "visible";
+				navshoplist.style.opacity= "1";
+				navshoplist.style.transform= "translateY(0px)"
+			});
+			navli[5].addEventListener("mouseleave",function (){
+				let navflag= true;
+				navshoplist.addEventListener("mousemove",function (){
+					navflag= false;
+				});
+				setTimeout(function (){
+					if(navflag){
+						navshoplist.style.visibility= "hidden";
+						navshoplist.style.opacity= "0";
+						navshoplist.style.transform= "translateY(-50px)";
+					}
+				},150);
+			});
+			let bannerA= document.querySelector(".banner-container-top");
+			let bannerdivA= document.querySelectorAll(".banner-container-top>div>a");
+			bannerdivA[0].style.fontWeight= "700";
+			bannerdivA[0].style.opacity= "1";
+			bannerA.addEventListener("click",function (e){
+				if(e.target.tagName==="A"){
+					for(let i= 0;i<bannerdivA.length;i++){
+						bannerdivA[i].style.opacity= "0.7";
+						bannerdivA[i].style.fontWeight= "500";
+						bannerdivA[i].style.backgroundImage= "black";
+						bannerdivA[i].parentNode.classList.remove("banner-container-bgcolor");
+					}
+					e.target.parentNode.classList.add("banner-container-bgcolor");
+					e.target.style.opacity= "1";
+					e.target.style.fontWeight= "700";
+				}
+			});
+			let TodayRecommend= document.querySelectorAll(".TodayRecommend>div>div");
+			for(let i= 0;i<TodayRecommend.length;i++){
+				TodayRecommend[i].addEventListener("mouseenter",function (){
+					this.style.boxShadow= "0 0 5px RGBA(0,0,0,1)";
+					this.children[0].style.transform= "scale(1.1)";
+				});
+				TodayRecommend[i].addEventListener("mouseleave",function (){
+					this.style.boxShadow= "none";
+					this.children[0].style.transform= "scale(1)";
+				});
+			}
+			let ContainerShopDiv= document.querySelectorAll(".ContainerShop>div>div>div");
+			let shopdata= [
+				{Pdata:"[订制游]全国往返英国13天自由行",Adata:"￥47650元起",Imgdata:"../img/shop1.jpg"},
+				{Pdata:"[订制游]全国往返冰岛11天自由行",Adata:"￥22980元起",Imgdata:"../img/shop2.jpg"},
+				{Pdata:"[订制游]全国往返日本8天定制自由行",Adata:"￥6980元起",Imgdata:"../img/shop3.jpg"},
+				{Pdata:"[春节/五一]上海直飞日本大阪东京名古屋",Adata:"￥1399元起",Imgdata:"../img/shop4.jpg"},
+				{Pdata:"[订制游]全国往返日本关西8日定制自由行",Adata:"￥8860元起",Imgdata:"../img/shop5.jpg"},
+				{Pdata:"[订制游]全国往返日本东京7日教育之行",Adata:"￥7860元起",Imgdata:"../img/shop6.jpg"},
+				{Pdata:"[订制游]全国往返西班牙+葡萄牙",Adata:"￥16800元起",Imgdata:"../img/shop7.jpg"},
+				{Pdata:"[订制游]全国往返澳大利亚东海岸",Adata:"￥19800元起",Imgdata:"../img/shop8.jpg"},
+				{Pdata:"[订制游]全国出发往返西班牙9天自由行",Adata:"￥19680元起",Imgdata:"../img/shop9.jpg"},
+				{Pdata:"[订制游]全国往返土耳其15日自由行",Adata:"￥18890元起",Imgdata:"../img/shop10.jpg"},
+				{Pdata:"[订制游]全国往返肯尼亚8天6晚自由行",Adata:"￥18650元起",Imgdata:"../img/shop11.jpg"},
+				{Pdata:"[订制游]全国往返法国+比利时自由行",Adata:"￥22800元起",Imgdata:"../img/shop12.jpg"}
+			];
+			shopfn();
+			function shopfn(){
+				let shoparr= new Array(shopdata.length);
+				for(let i= 0;i<shopdata.length;i++){
+					shoparr[i]= i;
+				}
+				let r;
+				for(let i= 0;i<Math.min(shopdata.length,6);i++){
+					r= Math.floor(Math.random()*shoparr.length);
+					let rf= shoparr[r];
+					ContainerShopDiv[i].children[1].children[0].innerHTML=shopdata[rf].Pdata;
+					ContainerShopDiv[i].children[1].children[2].innerHTML=shopdata[rf].Adata;
+					ContainerShopDiv[i].children[0].src= shopdata[rf].Imgdata;
+					shoparr.splice(r,1);
+				}
+			}
+			for(let i= 0;i<ContainerShopDiv.length;i++){
+				ContainerShopDiv[i].addEventListener("mouseenter",function (){
+					this.style.boxShadow= "2px 2px 5px RGBA(0,0,0,1)";
+					this.children[1].children[0].style.color= "#FF6347";
+					this.children[1].children[2].style.fontSize= "30px";
+					this.children[1].children[2].style.color= "red";
+				});
+				ContainerShopDiv[i].addEventListener("mouseleave",function (){
+					this.style.boxShadow= "none";
+					this.children[1].children[0].style.color= "black";
+					this.children[1].children[2].style.fontSize= "25px";
+					this.children[1].children[2].style.color= "#ff7362";
+				});
+			}
+			document.querySelector(".ContainerShop>div>span").addEventListener("click",shopfn);
+			let hotdata= [
+				[
+					{ImageData:"../img/hotimg1-1.jpg",ProFileData:"../img/profile1-1.jpg",uname:"HongKongDoll",pdata:"传说中的A岛和C岛，未知海岛的独处时光"},
+					{ImageData:"../img/hotimg1-2.jpg",ProFileData:"../img/profile1-2.jpg",uname:"艾伦伦",pdata:"【遇见迪庆】云山的彼方，是被神眷顾的秘境天堂"},
+					{ImageData:"../img/hotimg1-3.jpg",ProFileData:"../img/profile1-3.jpg",uname:"小宇",pdata:"8天7晚航海日志，穿越奇迹之海，四王岛船宿潜水"},
+					{ImageData:"../img/hotimg1-4.jpg",ProFileData:"../img/profile1-4.jpg",uname:"安哲",pdata:"【一个人的旅行】重访柬埔寨，为吴哥写书"},
+					{ImageData:"../img/hotimg1-5.jpg",ProFileData:"../img/profile1-5.jpg",uname:"epic14",pdata:"岛根：在神的国度蜻蜓点水——出云、松江与安来掠影"},
+					{ImageData:"../img/hotimg1-6.jpg",ProFileData:"../img/profile1-6.jpg",uname:"黄元琪",pdata:"慢游清迈与南邦：十年脚步中的优雅时光"},
+					{ImageData:"../img/hotimg1-7.jpg",ProFileData:"../img/profile1-7.jpg",uname:"程巴布",pdata:"秋日胜春朝 无花还有画：荷比卢德自驾12天"},
+					{ImageData:"../img/hotimg1-8.jpg",ProFileData:"../img/profile1-8.jpg",uname:"challfy",pdata:"布列塔尼 - 古老和现代间，用艺术拥抱海洋"}
+				],
+				[
+					{ImageData:"../img/hotimg2-1.jpg",ProFileData:"../img/profile2-1.jpg",uname:"汉堡包包",pdata:"马德里不思议，突然的想念你（跟着汉堡包包深度二刷马德里"},
+					{ImageData:"../img/hotimg2-2.jpg",ProFileData:"../img/profile2-2.jpg",uname:"轶永君进行曲",pdata:"【山行南联盟】#北枕多瑙醉清风，南临黑山观沧海"},
+					{ImageData:"../img/hotimg2-3.jpg",ProFileData:"../img/profile2-3.jpg",uname:"程巴布",pdata:"三月飘雪 温暖如春——北海道6日（雪地摩托、漂流体验）"},
+					{ImageData:"../img/hotimg2-4.jpg",ProFileData:"../img/profile2-4.jpg",uname:"milkkitty",pdata:"【月半夫妇】里加+塔林+瑞典南部（遇到国王版）+哥本哈根"},
+					{ImageData:"../img/hotimg2-5.jpg",ProFileData:"../img/profile2-5.jpg",uname:"Leticiakawaii",pdata:"一天打卡一座城：和我一起去看看波罗的海三国吧！"},
+					{ImageData:"../img/hotimg2-6.jpg",ProFileData:"../img/profile2-6.jpg",uname:"epic14",pdata:"拨云散雾见长崎：关于长崎县的四段记忆"},
+					{ImageData:"../img/hotimg2-7.jpg",ProFileData:"../img/profile2-7.jpg",uname:"sky_leciel",pdata:"【全文完】邂逅一场有山有海的冬雪之旅"},
+					{ImageData:"../img/hotimg2-8.jpg",ProFileData:"../img/profile2-8.jpg",uname:"iamicecake",pdata:"冰糕之带娃普吉欢乐行（5日游，已完结，万字攻略游记）"}
+				],
+				[
+					{ImageData:"../img/hotimg3-1.jpg",ProFileData:"../img/profile3-1.jpg",uname:"沐峭",pdata:"大风起兮, 云飞扬----巴塔哥尼亚南美洲20天"},
+					{ImageData:"../img/hotimg3-2.jpg",ProFileData:"../img/profile3-2.jpg",uname:"井力乱步",pdata:"【一休妈】一路“狂飙”∣粤中、梧州--国保古建筑"},
+					{ImageData:"../img/hotimg3-3.jpg",ProFileData:"../img/profile3-3.jpg",uname:"Lucy101212",pdata:"重回北欧，记录在童话世界度过的15天美好瞬间"},
+					{ImageData:"../img/hotimg3-4.jpg",ProFileData:"../img/profile3-4.jpg",uname:"背包客南迦巴瓦",pdata:"独行安纳托利亚（番红花城/特拉布宗/卡尔斯...）"},
+					{ImageData:"../img/hotimg3-5.jpg",ProFileData:"../img/profile3-5.jpg",uname:"st-dolly",pdata:"《重返世界》（107天，22国，横跨加勒比、中美、南美...）"},
+					{ImageData:"../img/hotimg3-6.jpg",ProFileData:"../img/profile3-6.jpg",uname:"fifapkz",pdata:"极昼下的诡秘和绚丽，流连于众神居所-挪威瑞典13日游"},
+					{ImageData:"../img/hotimg3-7.jpg",ProFileData:"../img/profile3-7.jpg",uname:"pingzi里的鱼",pdata:"暑假16天自驾深度游 含详细攻略（完结）"},
+					{ImageData:"../img/hotimg3-8.jpg",ProFileData:"../img/profile3-8.jpg",uname:"Brivan",pdata:"【马耳他】遗憾的那一抹蓝〡马耳他岛人文自驾之旅"}
+				],
+				[
+					{ImageData:"../img/hotimg4-1.jpg",ProFileData:"../img/profile4-1.jpg",uname:"飘来荡去宝宝酱",pdata:"再次回归北陆吃吃喝喝。25th"},
+					{ImageData:"../img/hotimg4-2.jpg",ProFileData:"../img/profile4-2.jpg",uname:"天天的世界地图",pdata:"【冬日多伦多】一座埋藏在地下的迷宫"},
+					{ImageData:"../img/hotimg4-3.jpg",ProFileData:"../img/profile4-3.jpg",uname:"汉堡包包",pdata:"『Loving Vincent，至爱梵高』圣地巡礼"},
+					{ImageData:"../img/hotimg4-4.jpg",ProFileData:"../img/profile4-4.jpg",uname:"Brivan",pdata:"【马耳他】遗憾的那一抹蓝〡马耳他岛人文自驾之旅"},
+					{ImageData:"../img/hotimg4-5.jpg",ProFileData:"../img/profile4-5.jpg",uname:"意适然",pdata:"奇幻的阿联酋之行（迪拜-阿布扎比-沙迦｜8天6晚非自驾）"},
+					{ImageData:"../img/hotimg4-6.jpg",ProFileData:"../img/profile4-6.jpg",uname:"Yoki黄元琪",pdata:"慢游清迈与南邦：十年脚步中的优雅时光"},
+					{ImageData:"../img/hotimg4-7.jpg",ProFileData:"../img/profile4-7.jpg",uname:"卢济塔尼亚游吟",pdata:"北婆罗洲避暑漫行记（文莱+亚庇行10日，全文完工）"},
+					{ImageData:"../img/hotimg4-8.jpg",ProFileData:"../img/profile4-8.jpg",uname:"yukiqueen",pdata:"突如其来的青春记忆（东京+富士山+箱根+镰仓）"}
+				],
+				[
+					{ImageData:"../img/hotimg5-1.jpg",ProFileData:"../img/profile5-1.jpg",uname:"桃花源中人",pdata:"〔深度游天下 第10章〕蒙古：漠北赏秋，秋意深浓见牛羊"},
+					{ImageData:"../img/hotimg5-2.jpg",ProFileData:"../img/profile5-2.jpg",uname:"大灰狼的猫",pdata:"山西古建筑地图——跟着梁思成看晋北文化自驾7日游"},
+					{ImageData:"../img/hotimg5-3.jpg",ProFileData:"../img/profile5-3.jpg",uname:"云云在路上",pdata:"【两个女生全程公交游兰卡】16天大环线—贾夫纳..."},
+					{ImageData:"../img/hotimg5-4.jpg",ProFileData:"../img/profile5-4.jpg",uname:"麥子迷途",pdata:"去众神之国 聆听远古文明的呼唤 - 埃及自驾行记"},
+					{ImageData:"../img/hotimg5-5.jpg",ProFileData:"../img/profile5-5.jpg",uname:"麥子迷途",pdata:"道不尽的历史 赏不完的风光56天法意瑞环线自驾行(3)：瑞士篇"},
+					{ImageData:"../img/hotimg5-6.jpg",ProFileData:"../img/profile5-6.jpg",uname:"蓝芷",pdata:"【黑游记】就在秋天乘着火车慢游东北——黑龙江"},
+					{ImageData:"../img/hotimg5-7.jpg",ProFileData:"../img/profile5-7.jpg",uname:"蝈蝈小姐530",pdata:"晋北风华 | 72小时穿越1600年，去看那个天下“大同”"},
+					{ImageData:"../img/hotimg5-8.jpg",ProFileData:"../img/profile5-8.jpg",uname:"托尼star",pdata:"珠峰的故乡，走进喜马拉雅秘境，越野藏东小环线"}
+				],
+				[
+					{ImageData:"../img/hotimg6-1.jpg",ProFileData:"../img/profile6-1.jpg",uname:"程巴布",pdata:"第一次去Maldives当然要dive：居民岛Rasdhoo+吉隆坡10日"},
+					{ImageData:"../img/hotimg6-2.jpg",ProFileData:"../img/profile6-2.jpg",uname:"rain_chenyu",pdata:"三座城、三百里、三千年，博物馆巡礼之郑汴洛篇"},
+					{ImageData:"../img/hotimg6-3.jpg",ProFileData:"../img/profile6-3.jpg",uname:"天天的世界地图",pdata:"【雪山与星河下的梦境】亚丁大转山（6天5晚75km徒步）"},
+					{ImageData:"../img/hotimg6-4.jpg",ProFileData:"../img/profile6-4.jpg",uname:"大灰狼的猫",pdata:"川西至滇东不走回头路，成都到丽江单线10日游"},
+					{ImageData:"../img/hotimg6-5.jpg",ProFileData:"../img/profile6-5.jpg",uname:"aero4400",pdata:"【AERO4400】法国自驾小环线，卢瓦河谷、诺曼底十日游"},
+					{ImageData:"../img/hotimg6-6.jpg",ProFileData:"../img/profile6-6.jpg",uname:"Leticiakawaii",pdata:"德国&奥地利超详细6日游攻略--湖区、山峰风光应有尽有~"},
+					{ImageData:"../img/hotimg6-7.jpg",ProFileData:"../img/profile6-7.jpg",uname:"卢济塔尼亚游吟",pdata:"重越国境，又见萨瓦迪卡A段曼谷都市，B段泰北兰纳"},
+					{ImageData:"../img/hotimg6-8.jpg",ProFileData:"../img/profile6-8.jpg",uname:"飘来荡去宝宝酱",pdata:"名古屋/伊势/鸟羽/奈良/大阪/神户/和歌山/身障者优惠。"}
+				],
+				[
+					{ImageData:"../img/hotimg7-1.jpg",ProFileData:"../img/profile7-1.jpg",uname:"拿相机的尤",pdata:"重庆奉节｜跟着诗人的足迹，寻古问今（含全攻略及行程路线）"},
+					{ImageData:"../img/hotimg7-2.jpg",ProFileData:"../img/profile7-2.jpg",uname:"蓝先生随行记",pdata:"玩转中珠澳｜遇见大香山的他们，用对味的方式打开一座城"},
+					{ImageData:"../img/hotimg7-3.jpg",ProFileData:"../img/profile7-3.jpg",uname:"liangyin789",pdata:"2023马来西亚自驾一路向南，吉隆坡，森美兰，柔佛，新山..."},
+					{ImageData:"../img/hotimg7-4.jpg",ProFileData:"../img/profile7-4.jpg",uname:"轶永君进行曲",pdata:"【摩国山海志】穿越大阿特拉斯，探寻北非古国的山海..."},
+					{ImageData:"../img/hotimg7-5.jpg",ProFileData:"../img/profile7-5.jpg",uname:"gzwhjc",pdata:"法式浪漫：2023年法国、西班牙26天纯公共交通自由行"},
+					{ImageData:"../img/hotimg7-6.jpg",ProFileData:"../img/profile7-6.jpg",uname:"second_lulu",pdata:"202308北京站（环球影视乐园+故宫+国博+夜游...)"},
+					{ImageData:"../img/hotimg7-7.jpg",ProFileData:"../img/profile7-7.jpg",uname:"饭团karenchow",pdata:"一个微笑，一句“salam”（平安），我为你动容"},
+					{ImageData:"../img/hotimg7-8.jpg",ProFileData:"../img/profile7-8.jpg",uname:"rain_chenyu",pdata:"半海半沙，千年一梦，以约埃中东行之埃及篇"}
+				],
+				[
+					{ImageData:"../img/hotimg8-1.jpg",ProFileData:"../img/profile8-1.jpg",uname:"sfymoises",pdata:"【飞野的星辰大海】法老与河-2022年7月埃及行全攻略"},
+					{ImageData:"../img/hotimg8-2.jpg",ProFileData:"../img/profile8-2.jpg",uname:"liangyin789",pdata:"2023马来西亚自驾一路向南，吉隆坡，森美兰，柔佛..."},
+					{ImageData:"../img/hotimg8-3.jpg",ProFileData:"../img/profile8-3.jpg",uname:"XIANG翔哥",pdata:"海口 | 有谁能拒绝这里的小吃吗？反正我不能！"},
+					{ImageData:"../img/hotimg8-4.jpg",ProFileData:"../img/profile8-4.jpg",uname:"一只旅牛",pdata:"九色甘南，信仰的诗篇（已完结）"},
+					{ImageData:"../img/hotimg8-5.jpg",ProFileData:"../img/profile8-5.jpg",uname:"fbird22",pdata:"告诉你一个真实的伊拉克——伊拉克全景半自驾游，绝对开荒贴"},
+					{ImageData:"../img/hotimg8-6.jpg",ProFileData:"../img/profile8-6.jpg",uname:"安哲_ran",pdata:"【一个人的旅行】重访柬埔寨，为吴哥写书"},
+					{ImageData:"../img/hotimg8-7.jpg",ProFileData:"../img/profile8-7.jpg",uname:"口丁口丁",pdata:"【金刚&口丁行天下】薄雾浓云中穿行在冬季的南国..."},
+					{ImageData:"../img/hotimg8-8.jpg",ProFileData:"../img/profile8-8.jpg",uname:"菜伯伯",pdata:"超经济关西8日铁道之旅 - 门司港&广岛绝赞海景...使用攻略"}
+				],
+				[
+					{ImageData:"../img/hotimg9-1.jpg",ProFileData:"../img/profile9-1.jpg",uname:"瑶印象",pdata:"新评西湖十景 | 西湖往事，十个故事，一场光影交织的梦"},
+					{ImageData:"../img/hotimg9-2.jpg",ProFileData:"../img/profile9-2.jpg",uname:"fangfang0518",pdata:"二人一车，47天川陕行（四川篇）"},
+					{ImageData:"../img/hotimg9-3.jpg",ProFileData:"../img/profile9-3.jpg",uname:"卡夫奇妙酱",pdata:"洛阳牡丹/巩义石窟/北宋皇陵/百万庄园/商都遗址..."},
+					{ImageData:"../img/hotimg9-4.jpg",ProFileData:"../img/profile9-4.jpg",uname:"枫行旅世界",pdata:"【贵州】贵州全景9天，饱览人文、自然与美食的快意旅行"},
+					{ImageData:"../img/hotimg9-5.jpg",ProFileData:"../img/profile9-5.jpg",uname:"milkkitty",pdata:"【月半夫妇】之【Mrs.月半】法兰西第六季..."},
+					{ImageData:"../img/hotimg9-6.jpg",ProFileData:"../img/profile9-6.jpg",uname:"sarixuan",pdata:"丝路“周游”—乌兹别克斯坦行摄之旅"},
+					{ImageData:"../img/hotimg9-7.jpg",ProFileData:"../img/profile9-7.jpg",uname:"肖诗",pdata:"从520玩到六一～粤港澳大湾区13天12晚逛吃之旅"},
+					{ImageData:"../img/hotimg9-8.jpg",ProFileData:"../img/profile9-8.jpg",uname:"蝈蝈小姐530",pdata:"春游长岛，开启一场可持续海洋探索之旅"}
+				],
+				[
+					{ImageData:"../img/hotimg10-1.jpg",ProFileData:"../img/profile10-1.jpg",uname:"摄影师张鎣",pdata:"阿联酋11日亲子自驾-迪拜 阿布扎比 富查伊拉"},
+					{ImageData:"../img/hotimg10-2.jpg",ProFileData:"../img/profile10-2.jpg",uname:"Leticiakawaii",pdata:"周边小镇不可思议之旅~含五天四夜交通景点详解"},
+					{ImageData:"../img/hotimg10-3.jpg",ProFileData:"../img/profile10-3.jpg",uname:"小宇Sylvia",pdata:"8天7晚航海日志，穿越奇迹之海，四王岛船宿潜水"},
+					{ImageData:"../img/hotimg10-4.jpg",ProFileData:"../img/profile10-4.jpg",uname:"baronzhang",pdata:"小张看天下之纵贯英伦16天..."},
+					{ImageData:"../img/hotimg10-5.jpg",ProFileData:"../img/profile10-5.jpg",uname:"沙漠里的蔷薇",pdata:"秘鲁，一场山河湖海的爱恋（利马/亚马孙雨林/库斯科...）"},
+					{ImageData:"../img/hotimg10-6.jpg",ProFileData:"../img/profile10-6.jpg",uname:"沐峭",pdata:"远古的风，蓝色的梦  ---希腊山海20天"},
+					{ImageData:"../img/hotimg10-7.jpg",ProFileData:"../img/profile10-7.jpg",uname:"sfymoises",pdata:"【飞野的星辰大海】巴尔干风云"},
+					{ImageData:"../img/hotimg10-8.jpg",ProFileData:"../img/profile10-8.jpg",uname:"Fiorelady",pdata:"湖南5天4夜自由行全攻略：在凤凰古城换装苗服...."}
+				],
+				[
+					{ImageData:"../img/hotimg11-1.jpg",ProFileData:"../img/profile11-1.jpg",uname:"seaman5009",pdata:"夏天去新疆看雪山、独库公路/唐布拉/巴音布鲁克..."},
+					{ImageData:"../img/hotimg11-2.jpg",ProFileData:"../img/profile11-2.jpg",uname:"菲林_Film",pdata:"山一程水一程，桂林山水动江城"},
+					{ImageData:"../img/hotimg11-3.jpg",ProFileData:"../img/profile11-3.jpg",uname:"枫行旅世界",pdata:"【法国】从尼斯到巴黎，四人自驾法国15日全攻略"},
+					{ImageData:"../img/hotimg11-4.jpg",ProFileData:"../img/profile11-4.jpg",uname:"aero4400",pdata:"【AERO4400】一个人的旅行，维也纳、萨尔茨堡...."},
+					{ImageData:"../img/hotimg11-5.jpg",ProFileData:"../img/profile11-5.jpg",uname:"汪排骨是喵星人",pdata:"又一次横跨北美！多伦多-班夫14天..."},
+					{ImageData:"../img/hotimg11-6.jpg",ProFileData:"../img/profile11-6.jpg",uname:"cici澄",pdata:"海南自驾旅行｜沿着西海岸线南下，“宿”在风光里"},
+					{ImageData:"../img/hotimg11-7.jpg",ProFileData:"../img/profile11-7.jpg",uname:"曐舊",pdata:"入埃及记（疫情后出行极具参考价值，四万字吐血放送）"},
+					{ImageData:"../img/hotimg11-8.jpg",ProFileData:"../img/profile11-8.jpg",uname:"环游xin旅行",pdata:"宝藏青海全线自驾（三江源、尕朵觉悟、阿尼玛卿、祁连山）"}
+				],
+				[
+					{ImageData:"../img/hotimg12-1.jpg",ProFileData:"../img/profile12-1.jpg",uname:"jane007",pdata:"说走就走随心所欲的呼伦贝尔之夏---海拉尔上护林村..."},
+					{ImageData:"../img/hotimg12-2.jpg",ProFileData:"../img/profile12-2.jpg",uname:"念小遗",pdata:"悠游澳门6日不完全指南（附15家澳门味道和米其林餐厅）"},
+					{ImageData:"../img/hotimg12-3.jpg",ProFileData:"../img/profile12-3.jpg",uname:"茱妮",pdata:"【景德镇 | 陶瓷理想国】从创意市集到艺术乡村的四日之旅"},
+					{ImageData:"../img/hotimg12-4.jpg",ProFileData:"../img/profile12-4.jpg",uname:"康行记Karl",pdata:"香港4日公共交通自由行游记-旧貌新颜街头故事"},
+					{ImageData:"../img/hotimg12-5.jpg",ProFileData:"../img/profile12-5.jpg",uname:"菲林_Film",pdata:"太仓旅行|四天三夜玩转太仓"},
+					{ImageData:"../img/hotimg12-6.jpg",ProFileData:"../img/profile12-6.jpg",uname:"fluffymm",pdata:"【珍惜当下，重新出发】2023年泰国清迈——5天4夜休闲体验"},
+					{ImageData:"../img/hotimg12-7.jpg",ProFileData:"../img/profile12-7.jpg",uname:"会说话的团子",pdata:"【多图】回到2019：土土土火的捷奥匈11日行"},
+					{ImageData:"../img/hotimg12-8.jpg",ProFileData:"../img/profile12-8.jpg",uname:"塔库电台",pdata:"【塔库电台】雪季余音与春季序曲—慕尼黑/萨尔茨堡打卡攻略"}
+				],
+			]
+			let HotBoxDiv= document.querySelectorAll(".Hotbox>div");
+			for(let i= 0;i<HotBoxDiv.length;i++){
+				HotBoxDiv[i].addEventListener("mouseenter",function (){
+					this.style.boxShadow= "0 0 5px RGBA(0,0,0,1)";
+				});
+			}
+			for(let i= 0;i<HotBoxDiv.length;i++){
+				HotBoxDiv[i].addEventListener("mouseleave",function (){
+					this.style.boxShadow= "none";
+				});
+			}
+			let len= HotBoxDiv.length;
+			for(let i= 0;i<len;i++){
+				HotBoxDiv[i].children[0].src= hotdata[0][i].ImageData;
+				HotBoxDiv[i].children[1].children[0].src= hotdata[0][i].ProFileData;
+				HotBoxDiv[i].children[2].innerHTML= hotdata[0][i].uname;
+				HotBoxDiv[i].children[3].innerHTML= hotdata[0][i].pdata;
+			}
+			let Hotlist= document.querySelector(".HotContainer-list>ul");
+			let lastHovered= Hotlist.children[0].children[0];
+			lastHovered.classList.add("hovered");
+			Hotlist.addEventListener("mouseover",function (e){
+				if(e.target.tagName==="SPAN"){
+					if(lastHovered){
+						lastHovered.classList.remove("hovered");
+					}
+					e.target.classList.add("hovered");
+					if(e.target!=lastHovered){
+						for(let i= 0;i<len;i++){
+							HotBoxDiv[i].style.opacity= "0";
+						}
+					}
+					lastHovered= e.target;
+					let datalist= parseInt(e.target.dataset.list);
+					setTimeout(function (){
+						for(let i= 0;i<len;i++){
+							HotBoxDiv[i].children[0].src= hotdata[datalist][i].ImageData;
+							HotBoxDiv[i].children[1].children[0].src= hotdata[datalist][i].ProFileData;
+							HotBoxDiv[i].children[2].innerHTML= hotdata[datalist][i].uname;
+							HotBoxDiv[i].children[3].innerHTML= hotdata[datalist][i].pdata;
+							HotBoxDiv[i].style.opacity= "1";
+						}
+					},200);
+				}
+			});
+			let biu= document.querySelector(".biu>ul");
+			let biup= document.querySelectorAll(".biu>ul>li>p");
+			biu.addEventListener("mouseover",function (e){
+				if(e.target.tagName==="IMG"){
+					biup[parseInt(e.target.dataset.biuindex)].style.top= "0px";
+				}
+			});
+			for(let i= 0;i<biup.length;i++){
+				biup[i].addEventListener("mouseleave",function (e){
+					for(let j= 0;j<biup.length;j++){
+						biup[j].style.top= "270px";
+					}
+				});
+			}
+			let topbtn= document.querySelector(".topbtn");
+			document.addEventListener("scroll",function (){
+				if(this.documentElement.scrollTop>1000){
+					topbtn.style.bottom= "150px";
+					topbtn.style.visibility= "visible";
+				}else{
+					topbtn.style.visibility= "hidden";
+					topbtn.style.bottom= "100px";
+				}
+			});
+			document.querySelector(".advertisement").addEventListener("mouseenter",function (){
+				this.style.animationPlayState= "paused";
+				document.querySelector(".advertisement>div").addEventListener("click",function (){
+					document.querySelector(".advertisement").style.display= "none";
+				});
+			});
+			document.querySelector(".advertisement").addEventListener("mouseleave",function (){
+				this.style.animationPlayState= "running";
+			});
+		</script>
+	</body>
+</html>

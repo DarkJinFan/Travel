@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>注册账号</title>
+		<style type="text/css">
+			* {
+			    margin: 0px;
+			    padding: 0px;
+			}
+			body {
+			    background-image: url("../img/loginbg.jpg");
+			    background-size: 100%;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    margin-top: 150px;
+			}
+			.register-container {
+			    background: rgba(255, 255, 255, 0.5);
+			    padding: 40px 50px;
+			    border-radius: 10px;
+			    box-shadow: 0 0 20px rgba(0, 0, 5, 0.5);
+			    width: 100%;
+			    max-width: 400px;
+			    position: relative;
+			}
+			.register-title {
+			    text-align: center;
+			    color: #1a73e8;
+			    margin-bottom: 30px;
+			    font-size: 40px;
+			}
+			.form-group {
+			    margin-bottom: 20px;
+			}
+			.form-label {
+			    display: block;
+			    color: #5f6368;
+			    margin-bottom: 8px;
+			    font-size: 15px;
+			}
+			.form-input {
+			    width: 100%;
+			    padding: 12px 15px;
+			    border: 1px solid #dfe1e5;
+			    border-radius: 8px;
+			    font-size: 1em;
+			    transition: 0.3s;
+			    box-sizing: border-box;
+			}
+			.form-input:focus {
+			    outline: none;
+			    border-color: #1a73e8;
+			    box-shadow: 0 0 8px rgba(26, 115, 232, 0.2);
+			}
+			.error-message {
+			    font-size: 15px;
+			    color: red;
+			    margin-top: 5px;
+			}
+			.terms-group {
+			    display: flex;
+			    align-items: center;
+			    margin: 15px 0;
+			    font-size: 0.9em;
+			    color: #5f6368;
+			}
+			.terms-group input {
+			    margin-right: 8px;
+			}
+			.terms-link {
+			    color: #1a73e8;
+			    text-decoration: none;
+			}
+			.terms-link:hover {
+			    text-decoration: underline;
+			}
+			.register-btn {
+			    display: block;
+				text-decoration: none;
+			    text-align: center;
+			    padding: 14px;
+			    background: #1a73e8;
+			    color: white;
+			    border: none;
+			    border-radius: 8px;
+			    font-size: 1em;
+			    font-weight: 500;
+			    transition: 0.3s;
+			    margin-top: 25px;
+			}
+			.register-btn:hover {
+			    background: #1556b0;
+			}
+			.login-link {
+			    margin-top: 20px;
+			    text-align: center;
+			    font-size: 0.9em;
+			    color: #5f6368;
+			}
+			.login-link a {
+			    color: #1a73e8;
+			    text-decoration: none;
+			    font-weight: 500;
+			}
+			.login-link a:hover {
+			    text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="register-container">
+			<h2 class="register-title">注册</h2>
+			<form id="registerForm">
+				<div class="form-group">
+					<label class="form-label" for="username">用户名</label>
+					<input type="text" class="form-input" id="username" placeholder="请输入用户名">
+					<p class="error-message" id="usernameError"></p>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="email">邮箱</label>
+					<input type="email" class="form-input" id="email" placeholder="请输入邮箱">
+					<p class="error-message" id="emailError"></p>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="password">密码</label>
+					<input type="password" class="form-input" id="password" placeholder="请输入密码">
+					<p class="error-message" id="passwordError"></p>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="confirmPassword">确认密码</label>
+					<input type="password" class="form-input" id="confirmPassword" placeholder="请再次输入密码">
+					<p class="error-message" id="confirmPasswordError"></p>
+				</div>
+				<div class="form-group terms-group">
+					<input type="checkbox" id="terms">
+					<label for="terms">我已阅读并同意<a href="#" class="terms-link">服务条款</a>和<a href="#" class="terms-link">隐私政策</a></label>
+					<p class="error-message" id="termsError"></p>
+				</div>
+				<a href="#" class="register-btn">立即注册</a>
+				<div class="login-link">
+					<p>已有账号？<a href="login.html">立即登录</a></p>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript">
+			let uname= document.querySelector("#username");
+			let unameflag= false;
+			uname.addEventListener("blur",unamefn);
+			function unamefn(){
+				if(uname.value.length<6){
+					document.querySelector("#usernameError").innerHTML= "长度不少于6位!";
+				}else{
+					document.querySelector("#usernameError").innerHTML= "";
+					unameflag= true;
+				}
+			}
+			let email= document.querySelector("#email");
+			let emailflag= false;
+			email.addEventListener("blur",emailfn);
+			function emailfn(){
+				let emailchoice= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if(!(emailchoice.test(email.value))){
+					document.querySelector("#emailError").innerHTML = "请输入有效的邮箱地址";
+				}else{
+					document.querySelector("#emailError").innerHTML = "";
+					emailflag= true;
+				}
+			}
+			let pwd= document.querySelector("#password");
+			let pwdflag= false;
+			let pwdtemp;
+			pwd.addEventListener("blur",pwdfn);
+			function pwdfn(){
+				let pwdchoice= /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}/;
+				if(!(pwdchoice.test(pwd.value))){
+					document.querySelector("#passwordError").innerHTML="至少包含8位-20位大写、小写字母以及数字!";
+				}else{
+					document.querySelector("#passwordError").innerHTML="";
+					pwdflag= true;
+					pwdtemp= pwd.value;
+				}
+			}
+			let twepwd= document.querySelector("#confirmPassword");
+			let twepwdflag= false;
+			twepwd.addEventListener("blur",twepwdfn);
+			function twepwdfn(){
+				if(!(pwdtemp==twepwd.value)){
+					document.querySelector("#confirmPasswordError").innerHTML= "两次输入的密码不一致";
+				}else{
+					document.querySelector("#confirmPasswordError").innerHTML= "";
+					twepwdflag= true;
+					
+				}
+			}
+			let check= document.querySelector("#terms");
+			let checkflag= false;
+			function checkfn(){
+				if(!(check.checked)){
+					document.querySelector("#termsError").innerHTML= "请同意服务条款和隐私政策";
+				}else{
+					document.querySelector("#termsError").innerHTML= "";
+					checkflag= true;
+				}
+			}
+			document.querySelector(".register-btn").addEventListener("click",function (){
+				unamefn();
+				emailfn();
+				pwdfn();
+				twepwdfn();
+				checkfn();
+				if(unameflag&&emailflag&&pwdflag&&twepwdflag&&checkflag){
+					window.location.href= "login.html";
+				}else{
+					unamefn();
+					emailfn();
+					pwdfn();
+					twepwdfn();
+					checkfn();
+				}
+			});
+		</script>
+	</body>
+</html>  

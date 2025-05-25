@@ -1,0 +1,179 @@
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				background-image: url("../img/loginbg.jpg");
+				background-size: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 200px;
+				background-attachment: fixed;
+			}
+			.login-container {
+			    background: rgba(255, 255, 255, 0.5);
+			    padding: 40px 50px;
+			    border-radius: 10px;
+			    box-shadow: 0 0 20px rgba(0,0,5,0.5);
+			    width: 100%;
+			    max-width: 400px;
+				position: relative;
+			}
+			.login-title {
+			    text-align: center;
+			    color: #1a73e8;
+			    margin-bottom: 30px;
+			    font-size: 40px;
+			}
+			.form-group {
+			    margin-bottom: 20px;
+			}
+			.form-label {
+			    display: block;
+			    color: #5f6368;
+			    margin-bottom: 8px;
+			    font-size: 0.9em;
+			}
+			.form-input {
+			    width: 100%;
+			    padding: 12px 15px;
+			    border: 1px solid #dfe1e5;
+			    border-radius: 8px;
+			    font-size: 1em;
+			    transition: 0.3s;
+			}
+			.form-input:focus {
+			    outline: none;
+			    border-color: #1a73e8;
+			    box-shadow: 0 0 8px rgba(26, 115, 232, 0.2);
+			}
+			.remember-me {
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-between;
+			    margin: 15px 0 25px;
+			    font-size: 0.9em;
+			    color: #5f6368;
+			}
+			.remember-me input {
+			    margin-right: 8px;
+			}
+			.forgot-password {
+			    color: #1a73e8;
+			    text-decoration: none;
+			    transition: color 0.3s ease;
+			}
+			.forgot-password:hover {
+			    text-decoration: underline;
+			}
+			.login-btn {
+				display: block;
+				text-align: center;
+				text-decoration: none;
+			    padding: 14px;
+			    background: #1a73e8;
+			    color: white;
+			    border: none;
+			    border-radius: 8px;
+			    font-size: 1em;
+			    font-weight: 500;
+			    cursor: pointer;
+			    transition: background 0.3s ease;
+			}
+			.login-btn:hover {
+			    background: #1556b0;
+			}
+			.social-login {
+			    margin-top: 30px;
+			    text-align: center;
+			    color: #5f6368;
+			}
+			.register-link {
+			    margin-top: 20px;
+			    text-align: center;
+			    font-size: 0.9em;
+			    color: #5f6368;
+			}
+			.register-link a {
+			    color: #1a73e8;
+			    text-decoration: none;
+			    font-weight: 500;
+			}
+			.register-link a:hover {
+			    text-decoration: underline;
+			}
+			.login-container>img{
+				width: 200px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login-container">
+		    <h2 class="login-title">登录</h2>
+		    <form id="loginForm">
+		        <div class="form-group">
+		            <label class="form-label" for="email">账号</label>
+		            <input type="text" class="form-input" id="email" placeholder="请输入账号">
+					<p style="font-size: 15px;color: red;" id="zhp"></p>
+		        </div>
+		        <div class="form-group">
+		            <label class="form-label" for="password">密码</label>
+		            <input type="password" class="form-input" id="password" placeholder="请输入密码">
+					<p style="font-size: 15px;color: red;" id="pwdp"></p>
+		        </div>
+		        <div class="remember-me">
+		            <div>
+		                <input type="checkbox" id="remember">
+		                <label for="remember">记住我</label>
+		            </div>
+		            <a href="register.html" class="forgot-password">忘记密码？</a>
+		        </div>
+		        <a href="#" class="login-btn">立即登录</a>
+		        <div class="register-link">
+		            <p>还没有账号？<a href="register.html">立即注册</a></p>
+		        </div>
+		    </form>
+		</div>
+		<script type="text/javascript">
+			let zhanghao= document.querySelector("#email");
+			let pwd= document.querySelector("#password");
+			let truesflag= false;
+			let truesflag2= false;
+			zhanghao.addEventListener("blur",zhanghaofn);
+			function zhanghaofn(){
+				if(zhanghao.value.length<6){
+					document.querySelector("#zhp").innerHTML= "账号长度不足6位";
+				}else{
+					document.querySelector("#zhp").innerHTML= "";
+					truesflag= true;
+				}
+			}
+			pwd.addEventListener("blur",pwdfn);
+			function pwdfn(){
+				const flag= /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}/;
+				if(!(flag.test(this.value))){
+					document.querySelector("#pwdp").innerHTML="至少包含8位-20位大写、小写字母以及数字!";
+				}else{
+					document.querySelector("#pwdp").innerHTML= "";
+					truesflag2= true;
+				}
+			}
+			document.querySelector(".login-btn").addEventListener("click",function (){
+				if(truesflag&&truesflag2){
+					this.href= "index.html";
+				}else{
+					zhanghaofn();
+					pwdfn();
+				}
+			});
+		</script>
+	</body>
+</html>
