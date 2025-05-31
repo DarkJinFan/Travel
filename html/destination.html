@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>拾光旅行馆</title>
+		<link rel="stylesheet" href="../font/iconfont.css" type="text/css">
+		<link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.top{
+				width: 100%;
+				height: 60px;
+				background-color: #c3c3c3;
+				margin: 0px auto;
+				border-bottom: 3px solid #878787;
+			}
+			.top-container{
+				width: 1600px;
+				height: 60px;
+				margin: 0px auto;
+			}
+			.nav>ul>li>a>img{
+				height: 55px;
+			}
+			.nav>ul{
+				list-style: none;
+			}
+			.nav>ul>li{
+				float: left;
+				margin: 0px 3px;
+			}
+			.nav>ul>li:first-child>a{
+				width: 230px;
+				opacity: 1;
+			}
+			.nav>ul>li>a{
+				display: block;
+				width: 80px;
+				height: 55px;
+				line-height: 55px;
+				font-weight: 700;
+				text-decoration: none;
+				color: black;
+				border-top: 5px solid #c3c3c3;
+				transition: 0.3s;
+				opacity: 0.7;
+				font-size: 18px;
+				text-align: center;
+			}
+			.nav>ul>li>a:hover{
+				border-top: 5px solid white;
+				opacity: 1;
+			}
+			.nav-right{
+				width: 500px;
+				height: 60px;
+				float: right;
+			}
+			.search{
+				height: 60px;
+				width: 185px;
+				position: relative;
+				float: right;
+			}
+			.search>input{
+				opacity: 0;
+				width: 1px;
+				height: 25px;
+				transition: 0.3s;
+				position: absolute;
+				left: 20px;
+				top: 15px;
+			}
+			.search>span{
+				position: absolute;
+				left: 0px;
+				line-height: 60px;
+			}
+			.search>span:hover{
+				cursor: pointer;
+			}
+			.nav-right>div:first-child{
+				width: 310px;
+				height: 60px;
+				float: left;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.nav-right>div:first-child>a{
+				text-decoration: none;
+				color: black;
+				transition: 0.3s;
+			}
+			.nav-right>div:first-child>a:hover{
+				transform: scale(1.8);
+				color: red;
+			}
+			.nav-right>div:first-child>span>a{
+				text-decoration: none;
+				color: black;
+				font-size: 20px;
+				transition: 0.3s;
+			}
+			.nav-right>div:first-child>span>a:hover{
+				color: red;
+				font-size: 25px;
+			}
+			.community{
+				position: relative;
+			}
+			.navshop{
+				position: relative;
+			}
+			.navshop-list{
+				width: 140px;
+				height: 230px;
+				background-image: url(../img/navbg.png);
+				background-size: 140px 230px;
+				position: absolute;
+				top: 65px;
+				left: 0px;
+				z-index: 1000;
+				visibility: hidden;
+				opacity: 0;
+				transition: 0.3s;
+				transform: translateY(-50px);
+			}
+			.community-list{
+				width: 180px;
+				height: 300px;
+				background-image: url(../img/navbg.png);
+				background-size: 180px 300px;
+				position: absolute;
+				top: 65px;
+				left: 0px;
+				z-index: 1001;
+				visibility: hidden;
+				opacity: 0;
+				transition: 0.3s;
+				transform: translateY(-50px);
+			}
+			.community-list>ul{
+				list-style: none;
+				width: 160px;
+				height: 260px;
+				margin: 0px auto;
+				margin-top: 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.navshop-list>ul{
+				list-style: none;
+				width: 115px;
+				height: 190px;
+				margin: 0px auto;
+				margin-top: 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.community-list>ul>li:hover,.navshop-list>ul>li:hover{
+				background-color: #e3fae1;
+			}
+			
+			.community-list>ul>li>a,.navshop-list>ul>li>a{
+				text-decoration: none;
+				color: black;
+				font-size: 17px;
+			}
+			.banner{
+				position: relative;
+				width: 100%;
+				height: 500px;
+				background-image: url("../img/destinationBanner.jpg");
+				background-position: 0px 0px;
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			.banner-container{
+				width: 760px;
+				height: 150px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				margin: auto;
+			}
+			.banner-container>h1{
+				text-align: center;
+				font-size: 50px;
+				letter-spacing: 15px;
+				margin-bottom: 20px;
+				color: white;
+			}
+			.banner-container>input[type="text"]{
+				width: 620px;
+				height: 60px;
+				border: 0px;
+				float: left;
+				text-indent: 30px;
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				outline: none;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			}
+			.banner-container>a>span{
+				font-size: 25px;
+			}
+			.banner-container>a{
+				display: block;
+				width: 140px;
+				height: 60px;
+				background-color: #28b76c;
+				text-decoration: none;
+				text-align: center;
+				line-height: 60px;
+				font-size: 25px;
+				float: left;
+				color: white;
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			}
+			.banner-container>a:hover{
+				background-color: #1e8f53;
+			}
+			.centerhelp{
+				border-top: 3px #1ab05f solid;
+				width: 100%;
+				height: 230px;
+				background-color: #323232;
+			}
+			.centerhelp>div{
+				width: 1180px;
+				height: 230px;
+				margin: 0px auto;
+			}
+			.centerhelp>div>table{
+				width: 620px;
+				height: 180px;
+				text-align: center;
+				margin-top: 20px;
+			}
+			.centerhelp>div>table tr>th{
+				color: silver;
+			}
+			.centerhelp>div>table tr>td{
+				transition: 0.5s;
+				color: #959595;
+			}
+			.centerhelp>div>table tr>td:hover{
+				color: silver;
+				cursor: pointer;
+			}
+			.endbottom{
+				width: 100%;
+				height: 160px;
+				background-color: #242424;
+			}
+			.endbottom>div{
+				width: 1180px;
+				height: 160px;
+				margin: 0px auto;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-content: center;
+				color: white;
+			}
+			.endbottom>div>p{
+				letter-spacing: 3px;
+			}
+			.endbottom>div>p>a{
+				text-decoration: none;
+				color: white;
+			}
+			.topbtn{
+				width: 80px;
+				height: 80px;
+				position: fixed;
+				right: 100px;
+				bottom: 100px;
+				background-color: white;
+				box-shadow: 0px 0px 10px black;
+				visibility: hidden;
+				transition: 0.2s;
+			}
+			.topbtn>a{
+				text-align: center;
+				display: block;
+				width: 80px;
+				height: 80px;
+				margin-top: 10px;
+			}
+			.topbtn>a>img{
+				width: 60px;
+				height: 60px;
+			}
+			.hottop{
+				width: 1180px;
+				height: 440px;
+				margin: 0px auto;
+				display: flow-root;
+				position: relative;
+			}
+			.hottop>h2{
+				font-size: 24px;
+				font-weight: 500;
+				text-align: center;
+				margin-top: 20px;
+			}
+			.hottop>table{
+				width: 980px;
+				height: 380px;
+				text-align: left;
+				position: absolute;
+				top: 30px;
+				left: 160px;
+				right: 0px;
+				bottom: 0px;
+				margin: auto;
+			}
+			.hottop>table th{
+				text-align: left;
+			}
+			.hottop>table a{
+				text-decoration: none;
+				color: black;
+			}
+			.hottop>table a:hover{
+				color: #1ab05f;
+			}
+			.hotcity{
+				width: 1180px;
+				height: 600px;
+				margin: 0px auto;
+				display: flow-root;
+			}
+			.hotcity>h2{
+				text-align: center;
+				margin-top: 20px;
+			}
+			.hotcity>ul{
+				list-style: none;
+				width: 980px;
+				height: 35px;
+				margin: 0px auto;
+				display: flex;
+				justify-content: space-between;
+				margin-top: 20px;
+				border-bottom: 1px solid #929292;
+			}
+			.hotcity>ul>li>a{
+				display: block;
+				width: 160px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+				text-decoration: none;
+				color: #929292;
+				font-size: 19px;
+				font-weight: 540;
+			}
+			.lastchoose{
+				border-bottom: 3px solid #28b76c;
+				color: black;
+			}
+			.hotcity>div{
+				width: 980px;
+				display: none;
+				margin: 10px auto;
+			}
+			.hotdsp1>ul,.hotdsp2>ul{
+				width: 980px;
+				height: 150px;
+				margin: 0px auto;
+				list-style: none;
+				display: flex;
+				justify-content: space-between;
+				margin-top: 30px;
+			}
+			.hotdsp3>ul{
+				width: 980px;
+				height: 300px;
+				margin: 0px auto;
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 30px;
+				list-style: none;
+			}
+			.hotdsp1>ul>li,.hotdsp2>ul>li{
+				width: 300px;
+				height: 200px;
+			}
+			.hotdsp1>ul>li>h3,.hotdsp2>ul>li>h3,.hotdsp3>ul>li>h3,.hotdsp4>ul>li>h3,.hotdsp5>ul>li>h3,.hotdsp6>ul>li>h3{
+				margin-bottom: 20px;
+			}
+			.hotdsp1>ul>li>a,.hotdsp2>ul>li>a{
+				margin: 10px 10px;
+				text-decoration: none;
+				color: black;
+			}
+			.hotdsp1>ul>li>a:hover,.hotdsp2>ul>li>a:hover,.hotdsp3>ul>li>a:hover,.hotdsp4>ul>li>a:hover,.hotdsp5>ul>li>a:hover,.hotdsp6>ul>li>a:hover{
+				color: #1ab05f;
+			}
+			.hotdsp3>ul>li{
+				display: block;
+				width: 300px;
+				height: 100px;
+			}
+			.hotdsp3>ul>li>a,.hotdsp4>ul>li>a,.hotdsp5>ul>li>a,.hotdsp6>ul>li>a{
+				text-decoration: none;
+				color: black;
+			}
+			.hotdsp4>ul{
+				width: 980px;
+				height: 400px;
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 30px;
+			}
+			.hotdsp4>ul>li{
+				width: 320px;
+				height: 100px;
+			}
+			.hotdsp5>ul{
+				width: 980px;
+				height: 230px;
+				margin: 0px auto;
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+				align-content: space-around;
+				margin-top: 30px;
+			}
+			.hotdsp5>ul>li{
+				width: 320px;
+				height: 100px;
+			}
+			.hotdsp5>ul>li>a{
+				margin: 5px;
+			}
+			.hotdsp6>ul{
+				width: 980px;
+				height: 320px;
+				display: flex;
+				list-style: none;
+				flex-wrap: wrap;
+				align-content: space-around;
+				margin-top: 30px;
+			}
+			.hotdsp6>ul>li{
+				width: 325px;
+				height: 75px;
+			}
+			.hotcity>span>a{
+				display: block;
+				width: 200px;
+				height: 50px;
+				border: 1px solid #2fba71;
+				margin: 0px auto;
+				border-radius: 10px;
+				text-decoration: none;
+				color: #28b76c;
+				text-align: center;
+				line-height: 50px;
+				font-size: 25px;
+				transition: 0.3s;
+			}
+			.hotcity>span>a:hover{
+				background-color: #21bf6a;
+				color: white;
+			}
+			.month{
+				width: 980px;
+				height: 450px;
+				margin: 0px auto;
+				display: flow-root;
+			}
+			.month>h2{
+				text-align: center;
+				font-size: 30px;
+				margin-top: 20px;
+			}
+			.month>ul{
+				list-style: none;
+				width: 980px;
+				height: 50px;
+				display: flex;
+				justify-content: space-around;
+				margin-top: 10px;
+			}
+			.month>ul>li>a{
+				display: block;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 50px;
+				color: black;
+				text-decoration: none;
+				font-size: 20px;
+				transition: 0.2s;
+			}
+			.monthimg{
+				width: 980px;
+				height: 300px;
+				display: flex;
+				justify-content: space-around;
+				margin-top: 20px;
+			}
+			.monthimg>div{
+				width: 190px;
+				height: 300px;
+				background-position: 0px 0px;
+				background-size: 190px 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="All">
+			<div class="top" id="tp">
+				<div class="top-container">
+					<div class="nav">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="../img/logo.png">
+								</a>
+							</li>
+							<li>
+								<a href="#">目的地</a>
+							</li>
+							<li>
+								<a href="#">锦囊</a>
+							</li>
+							<li  class="community">
+								<a href="#">
+									社区
+									<span class="iconfont icon-xiala"></span>
+								</a>
+								<div class="community-list">
+									<ul>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-luntan"></span>
+												旅行论坛
+												<span class="iconfont icon-youla"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-wenda"></span>
+												旅行问答
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-tianjiazhuanlan_chuangjianzhuanlan"></span>
+												旅行专栏
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-Biu"></span>
+												旅行分享
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-jne"></span>
+												JNE旅行生活美学
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-hezuohuoban"></span>
+												结伴同游
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-fuzeren"></span>
+												负责任的旅行
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-xuanticehua"></span>
+												特别策划
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="iconfont icon-shipin"></span>
+												旅行精选视频
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#">行程助手</a>
+							</li>
+							<li class="navshop">
+								<a href="#">
+									商城
+									<span class="iconfont icon-xiala"></span>
+								</a>
+								<div class="navshop-list">
+									<ul>
+										<li>
+											<span class="iconfont icon-gongwenbao"></span>
+											<a href="#">机酒自由行</a>
+										</li>
+										<li>
+											<span class="iconfont icon-qizhi"></span>
+											<a href="#">当地玩乐</a>
+										</li>
+										<li>
+											<span class="iconfont icon-qianzheng"></span>
+											<a href="#">签证</a>
+										</li>
+										<li>
+											<span class="iconfont icon-baoxiandingdan"></span>
+											<a href="#">保险</a>
+										</li>
+										<li>
+											<span class="iconfont icon-youlun"></span>
+											<a href="#">邮轮</a>
+										</li>
+										<li>
+											<span class="iconfont icon-tubiaolunkuohua11"></span>
+											<a href="#">私人定制</a>
+										</li>
+										<li>
+											<span class="iconfont icon-icon-test"></span>
+											<a href="#">欧洲铁路</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#">酒店·民宿</a>
+							</li>
+							<li>
+								<a href="#">保险</a>
+							</li>
+						</ul>
+					</div>
+					<div class="nav-right">
+						<div>
+							<a href= "https://www.taobao.com/" target="_blank">
+								<span class="iconfont icon-tao" style="color: red;"></span>
+							</a>
+							<a href= "https://im.qq.com/index/" target="_blank">
+								<span class="iconfont icon-QQ"></span>
+							</a>
+							<a href= "https://weixin.qq.com/" target="_blank">
+								<span class="iconfont icon-weixin"></span>
+							</a>
+							<a href= "https://weibo.com" target="_blank">
+								<span class="iconfont icon-weibo"></span>
+							</a>
+							<span>
+								<a href="register.html">注册</a>
+							</span>
+							<span>
+								<a href="login.html">登录</a>
+							</span>
+						</div>
+						<div class="search">
+							<input type="text">
+							<span class="iconfont icon-sousuo"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="banner">
+				<div class="banner-container">
+					<h1>你好,世界!</h1>
+					<input type="text" placeholder="搜索国家,城市,目的地">
+					<a href="#">
+						<span class="iconfont icon-sousuo"></span>
+						搜索
+					</a>
+				</div>
+			</div>
+			<div class="hottop">
+				<h2>实时热门TOP10</h2>
+				<table>
+					<tr>
+						<th>国家TOP10</th>
+						<th>境外城市TOP10</th>
+						<th>国内TOP10</th>
+						<th>景点TOP10</th>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">1、新加坡</a>
+						</td>
+						<td>
+							<a href="#">1、大版，日本</a>
+						</td>
+						<td>
+							<a href="#">1、成都</a>
+						</td>
+						<td>
+							<a href="#">1、瘦西湖，扬州</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">2、格鲁吉亚</a>
+						</td>
+						<td>
+							<a href="#">2、槟城，马来西亚</a>
+						</td>
+						<td>
+							<a href="#">2、重庆</a>
+						</td>
+						<td>
+							<a href="#">2、赛里木湖，博乐</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">3、埃及</a>
+						</td>
+						<td>
+							<a href="#">3、兰卡威，马来西亚</a>
+						</td>
+						<td>
+							<a href="#">3、申扎</a>
+						</td>
+						<td>
+							<a href="#">3、琼库什台，伊犁</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">4、亚美尼亚</a>
+						</td>
+						<td>
+							<a href="#">4、吉隆坡，马来西亚</a>
+						</td>
+						<td>
+							<a href="#">4、喀什</a>
+						</td>
+						<td>
+							<a href="#">4、东湖南路凌波门，武汉</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">5、阿塞拜疆</a>
+						</td>
+						<td>
+							<a href="#">5、第比利斯，格鲁吉亚</a>
+						</td>
+						<td>
+							<a href="#">5、扬州</a>
+						</td>
+						<td>
+							<a href="#">5、有田，佐贺市</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">6、越南</a>
+						</td>
+						<td>
+							<a href="#">6、巴库，阿塞拜疆</a>
+						</td>
+						<td>
+							<a href="#">6、平遥</a>
+						</td>
+						<td>
+							<a href="#">6、梅里雪山</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">7、俄罗斯</a>
+						</td>
+						<td>
+							<a href="#">7、马尔代夫</a>
+						</td>
+						<td>
+							<a href="#">7、深圳</a>
+						</td>
+						<td>
+							<a href="#">7、清华园，北京</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">8、塞尔维亚</a>
+						</td>
+						<td>
+							<a href="#">8、胡志明市，越南</a>
+						</td>
+						<td>
+							<a href="#">8、伊犁</a>
+						</td>
+						<td>
+							<a href="#">8、上海野生动物园，上海</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">9、德国</a>
+						</td>
+						<td>
+							<a href="#">9、神奈川县，日本</a>
+						</td>
+						<td>
+							<a href="#">9、三亚</a>
+						</td>
+						<td>
+							<a href="#">9、前门大街，北京</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">10、伊朗</a>
+						</td>
+						<td>
+							<a href="#">10、圣彼得堡，俄罗斯</a>
+						</td>
+						<td>
+							<a href="#">10、苏州</a>
+						</td>
+						<td>
+							<a href="#">10、圆明园，北京</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="month">
+				<h2>月度推荐</h2>
+				<ul>
+					<li>
+						<a href="#" data-monthimg="0">1月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="1">2月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="2">3月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="3">4月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="4">5月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="5">6月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="6">7月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="7">8月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="8">9月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="9">10月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="10">11月</a>
+					</li>
+					<li>
+						<a href="#" data-monthimg="11">12月</a>
+					</li>
+				</ul>
+				<div class="monthimg">
+					<div>
+						
+					</div>
+					<div>
+						
+					</div>
+					<div>
+						
+					</div>
+					<div>
+						
+					</div>
+					<div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="hotcity">
+				<h2>热门城市推荐</h2>
+				<ul>
+					<li>
+						<a href="#" data-index="0">热门推荐</a>
+					</li>
+					<li>
+						<a href="#" data-index="1">日韩 港澳台</a>
+					</li>
+					<li>
+						<a href="#" data-index="2">东南亚及亚洲其他</a>
+					</li>
+					<li>
+						<a href="#" data-index="3">欧洲</a>
+					</li>
+					<li>
+						<a href="#" data-index="4">大洋洲 北美</a>
+					</li>
+					<li>
+						<a href="#" data-index="5">非洲 南美</a>
+					</li>
+				</ul>
+				<div class="hotdsp1" data-hotdsp="0" style="height: 150px;">
+					<ul>
+						<li>
+							<h3>全球TOP10城市</h3>
+							<a href="#">东京</a>
+							<a href="#">曼谷</a>
+							<a href="#">香港</a>
+							<a href="#">台北</a>
+							<a href="#">新加坡</a>
+							<a href="#">巴黎</a>
+							<a href="#">罗马</a>
+							<a href="#">伦敦</a>
+							<a href="#">首尔</a>
+							<a href="#">洛杉矶</a>
+						</li>
+						<li>
+							<h3>免签及落地签最热旅行地</h3>
+							<a href="#">济州岛</a>
+							<a href="#">印度尼西亚</a>
+							<a href="#">泰国</a>
+							<a href="#">摩洛哥</a>
+							<a href="#">卡塔尔</a>
+							<a href="#">毛里求斯</a>
+							<a href="#">柬埔寨</a>
+							<a href="#">厄瓜多尔</a>
+						</li>
+						<li>
+							<h3>热门海岛</h3>
+							<a href="#">长滩岛</a>
+							<a href="#">马尔代夫</a>
+							<a href="#">沙巴</a>
+							<a href="#">普吉岛</a>
+							<a href="#">巴厘岛</a>
+							<a href="#">芽庄</a>
+							<a href="#">帕劳</a>
+							<a href="#">冲绳市</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hotdsp2" data-hotdsp="1" style="height: 150px;">
+					<ul>
+						<li>
+							<h3>港澳台</h3>
+							<a href="#">香港</a>
+							<a href="#">澳门</a>
+							<a href="#">台北</a>
+							<a href="#">垦丁</a>
+							<a href="#">花莲</a>
+							<a href="#">高雄</a>
+							<a href="#">台中</a>
+							<a href="#">九份</a>
+							<a href="#">台南</a>
+							<a href="#">淡水</a>
+							<a href="#">宜兰</a>
+						</li>
+						<li>
+							<h3>日本</h3>
+							<a href="#">东京</a>
+							<a href="#">大阪</a>
+							<a href="#">京都</a>
+							<a href="#">冲绳</a>
+							<a href="#">北海道</a>
+							<a href="#">名古屋</a>
+							<a href="#">奈良</a>
+							<a href="#">富士山</a>
+						</li>
+						<li>
+							<h3>韩国</h3>
+							<a href="#">首尔</a>
+							<a href="#">济州岛</a>
+							<a href="#">釜山</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hotdsp3" data-hotdsp="2" style="height: 300px;">
+					<ul>
+						<li>
+							<h3>泰国</h3>
+							<a href="#">曼谷</a>
+							<a href="#">普吉岛</a>
+							<a href="#">清迈</a>
+							<a href="#">苏梅岛</a>
+							<a href="#">芭提雅</a>
+							<a href="#">甲米</a>
+							<a href="#">华欣</a>
+							<a href="#">皮皮岛</a>
+						</li>
+						<li>
+							<h3>新加坡</h3>
+							<a href="#">新加坡</a>
+						</li>
+						<li>
+							<h3>越南</h3>
+							<a href="#">芽庄</a>
+							<a href="#">胡志明市</a>
+							<a href="#">河内</a>
+							<a href="#">美奈</a>
+							<a href="#">大叻</a>
+							<a href="#">富国岛</a>
+						</li>
+						<li>
+							<h3>马来西亚</h3>
+							<a href="#">沙巴</a>
+							<a href="#">吉隆坡</a>
+							<a href="#">槟城</a>
+							<a href="#">亚庇</a>
+							<a href="#">兰卡威</a>
+							<a href="#">马六甲</a>
+							<a href="#">仙本那</a>
+						</li>
+						<li>
+							<h3>印度尼西亚</h3>
+							<a href="#">巴厘岛</a>
+							<a href="#">美娜多</a>
+							<a href="#">乌布</a>
+						</li>
+						<li>
+							<h3>菲律宾</h3>
+							<a href="#">长滩岛</a>
+							<a href="#">马尼亚</a>
+							<a href="#">薄荷岛</a>
+							<a href="#">杜马盖地</a>
+							<a href="#">宿雾市</a>
+						</li>
+						<li>
+							<h3>斯里兰卡</h3>
+							<a href="#">科伦坡</a>
+							<a href="#">斯里兰卡康堤</a>
+						</li>
+						<li>
+							<h3>柬埔寨</h3>
+							<a href="#">金边</a>
+							<a href="#">暹粒</a>
+						</li>
+						<li>
+							<h3>亚洲其他</h3>
+							<a href="#">迪拜</a>
+							<a href="#">马尔代夫</a>
+							<a href="#">阿布扎比</a>
+							<a href="#">耶路撒冷</a>
+							<a href="#">基什岛</a>
+							<a href="#">德里</a>
+							<a href="#">多哈</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hotdsp4" data-hotdsp="3" style="height: 400px;">
+					<ul>
+						<li>
+							<h3>意大利</h3>
+							<a href="#">罗马</a>
+							<a href="#">佛罗伦萨</a>
+							<a href="#">威尼斯</a>
+							<a href="#">米兰</a>
+							<a href="#">五渔村</a>
+							<a href="#">那不勒斯</a>
+							<a href="#">西西里岛</a>
+							<a href="#">比萨</a>
+						</li>
+						<li>
+							<h3>英国</h3>
+							<a href="#">伦敦</a>
+							<a href="#">爱丁堡</a>
+							<a href="#">剑桥</a>
+							<a href="#">牛津</a>
+							<a href="#">英国湖区</a>
+							<a href="#">曼彻斯特</a>
+							<a href="#">巴斯</a>
+							<a href="#">约克</a>
+							<a href="#">苏格兰</a>
+						</li>
+						<li>
+							<h3>德国</h3>
+							<a href="#">慕尼黑</a>
+							<a href="#">法兰克福</a>
+							<a href="#">柏林</a>
+							<a href="#">克隆</a>
+							<a href="#">海德堡</a>
+							<a href="#">汉堡</a>
+							<a href="#">斯图加特</a>
+							<a href="#">杜塞尔多夫</a>
+							<a href="#">纽伦堡</a>
+							<a href="#">德累斯顿</a>
+						</li>
+						<li>
+							<h3>法国</h3>
+							<a href="#">巴黎</a>
+							<a href="#">尼斯</a>
+							<a href="#">普罗旺斯</a>
+							<a href="#">阿维尼翁</a>
+							<a href="#">里昂</a>
+							<a href="#">马赛</a>
+							<a href="#">波尔多</a>
+							<a href="#">斯特拉斯堡</a>
+							<a href="#">戛纳</a>
+						</li>
+						<li>
+							<h3>西班牙</h3>
+							<a href="#">巴塞罗那</a>
+							<a href="#">塞尔维亚</a>
+							<a href="#">格拉纳达</a>
+							<a href="#">马德里</a>
+							<a href="#">瓦伦西亚</a>
+							<a href="#">托莱多</a>
+							<a href="#">龙达</a>
+							<a href="#">马略卡岛</a>
+						</li>
+						<li>
+							<h3>瑞士</h3>
+							<a href="#">苏黎世</a>
+							<a href="#">卢塞恩</a>
+							<a href="#">因特拉肯</a>
+							<a href="#">日内瓦</a>
+							<a href="#">伯尔尼</a>
+							<a href="#">洛桑</a>
+						</li>
+						<li>
+							<h3>奥地利</h3>
+							<a href="#">维也纳</a>
+							<a href="#">因斯布鲁克</a>
+						</li>
+						<li>
+							<h3>俄罗斯</h3>
+							<a href="#">莫斯科</a>
+							<a href="#">贝加尔湖</a>
+							<a href="#">圣彼得堡</a>
+							<a href="#">伊尔库茨克</a>
+						</li>
+						<li>
+							<h3>捷克</h3>
+							<a href="#">布拉格</a>
+							<a href="#">捷克克鲁姆洛夫</a>
+						</li>
+						<li>
+							<h3>荷兰</h3>
+							<a href="#">阿姆斯特丹</a>
+							<a href="#">羊角村</a>
+							<a href="#">鹿特丹</a>
+							<a href="#">海牙</a>
+						</li>
+						<li>
+							<h3>希腊</h3>
+							<a href="#">圣托里尼</a>
+							<a href="#">雅典</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hotdsp5" data-hotdsp="4" style="height: 230px;">
+					<ul>
+						<li>
+							<h3>澳大利亚</h3>
+							<a href="#">墨尔本</a>
+							<a href="#">悉尼</a>
+							<a href="#">黄金海岸</a>
+							<a href="#">布里斯班</a>
+							<a href="#">凯恩斯</a>
+							<a href="#">珀斯</a>
+							<a href="#">塔斯马尼亚岛</a>
+							<a href="#">袋鼠岛</a>
+						</li>
+						<li>
+							<h3>新西兰</h3>
+							<a href="#">奥克兰</a>
+							<a href="#">皇后镇</a>
+							<a href="#">基督城</a>
+							<a href="#">新西兰南岛</a>
+						</li>
+						<li>
+							<h3>美国</h3>
+							<a href="#">洛杉矶</a>
+							<a href="#">纽约</a>
+							<a href="#">旧金山</a>
+							<a href="#">拉斯维加斯</a>
+							<a href="#">加州圣地亚哥</a>
+							<a href="#">波士顿</a>
+							<a href="#">华盛顿</a>
+							<a href="#">夏威夷</a>
+							<a href="#">西雅图</a>
+							<a href="#">关岛</a>
+						</li>
+						<li>
+							<h3>加拿大</h3>
+							<a href="#">温哥华</a>
+							<a href="#">班夫国家公园</a>
+							<a href="#">多伦多</a>
+							<a href="#">蒙特利尔</a>
+							<a href="#">加拿大尼亚加拉瀑布城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hotdsp6" data-hotdsp="5" style="height: 320px;">
+					<ul>
+						<li>
+							<h3>摩洛哥</h3>
+							<a href="#">卡萨布兰卡</a>
+							<a href="#">马拉喀什</a>
+							<a href="#">菲斯</a>
+							<a href="#">舍夫沙万</a>
+						</li>
+						<li>
+							<h3>埃及</h3>
+							<a href="#">开罗</a>
+							<a href="#">卢克索</a>
+						</li>
+						<li>
+							<h3>南非</h3>
+							<a href="#">开普敦</a>
+							<a href="#">约翰内斯堡</a>
+						</li>
+						<li>
+							<h3>肯尼亚</h3>
+							<a href="#">内罗毕</a>
+							<a href="#">马赛马拉国家保护区</a>
+						</li>
+						<li>
+							<h3>秘鲁</h3>
+							<a href="#">马丘比丘</a>
+							<a href="#">利马</a>
+						</li>
+						<li>
+							<h3>阿根廷</h3>
+							<a href="#">布宜诺斯艾利斯</a>
+							<a href="#">乌斯怀亚</a>
+							<a href="#">埃尔卡拉法特</a>
+						</li>
+						<li>
+							<h3>毛里求斯</h3>
+							<a href="#">毛里求斯</a>
+						</li>
+						<li>
+							<h3>智力</h3>
+							<a href="#">圣地亚哥</a>
+							<a href="#">复活节岛</a>
+						</li>
+						<li>
+							<h3>巴西</h3>
+							<a href="#">里约热内卢</a>
+							<a href="#">圣保罗</a>
+						</li>
+						<li>
+							<h3>玻利维亚</h3>
+							<a href="#">乌尤尼</a>
+							<a href="#">拉巴斯</a>
+						</li>
+						<li>
+							<h3>厄瓜多尔</h3>
+							<a href="#">加拉帕戈斯群岛</a>
+							<a href="#">基多</a>
+							<a href="#">瓜尔基尔</a>
+						</li>
+					</ul>
+				</div>
+				<span>
+					<a href="#">查看全部国家</a>
+				</span>
+			</div>
+			<div class="centerhelp">
+				<div>
+					<table>
+						<tr>
+							<th>关于我们</th>
+							<th>加入我们</th>
+							<th>网站条款</th>
+							<th>帮助中心</th>
+						</tr>
+						<tr>
+							<td>简介</td>
+							<td>招聘职位</td>
+							<td>会员条款</td>
+							<td>新手上路</td>
+						</tr>
+						<tr>
+							<td>联系我们</td>
+							<td></td>
+							<td>社区指南</td>
+							<td>使用帮助</td>
+						</tr>
+						<tr>
+							<td>合作伙伴</td>
+							<td></td>
+							<td>版权声明</td>
+							<td>网站地图</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>免责声明</td>
+							<td>旅行工具</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="endbottom">
+				<div>
+					<p>COPY © 穷游网 | 京ICP 备20250525 号 营业执照 经营许可证</p>
+					<p>
+						友情链接:
+						<a href="#">国际租车</a>|
+						<a href="#">大自驾网</a>|
+						<a href="#">凤凰古城住宿推荐</a>|
+						<a href="#">信息聚合</a>|
+						<a href="#">神州租车</a>|
+						<a href="#">签证资讯网</a>|
+						<a href="#">同城旅游</a>|
+						<a href="#">相约久久网</a>|
+						<a href="#">火车票</a>|
+						<a href="#">多多驿站</a>
+					</p>
+				</div>
+			</div>
+			<div class="topbtn">
+				<a href="#tp">
+					<img src="../img/up.png">
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			let searchspan= document.querySelector(".search>span");
+			let searchtext= searchspan.previousElementSibling;
+			searchspan.addEventListener("mouseenter",function (){
+				setTimeout(function (){
+					searchtext.style.opacity= "1";
+					searchtext.style.width= "160px";
+				},100);
+				
+			});
+			searchtext.addEventListener("blur",function (){
+				setTimeout(function (){
+					searchtext.style.opacity= "0";
+					searchtext.style.width= "1px";
+				},50);
+			});
+			let communitylist= document.querySelector(".community-list");
+			let navli= document.querySelectorAll(".nav>ul>li");
+			navli[3].addEventListener("mouseenter",function (){
+				communitylist.style.visibility= "visible";
+				communitylist.style.opacity= "1";
+				communitylist.style.transform= "translateY(0px)";
+			});
+			
+			navli[3].addEventListener("mouseleave",function (){
+				let navflag= true;
+				communitylist.addEventListener("mousemove",function (){
+					navflag= false;
+				});
+				setTimeout(function (){
+					if(navflag){
+						communitylist.style.visibility= "hidden";
+						communitylist.style.opacity= "0";
+						communitylist.style.transform= "translateY(-50px)";
+					}
+				},150);
+			});
+			let navshoplist= document.querySelector(".navshop-list");
+			navli[5].addEventListener("mouseenter",function (){
+				navshoplist.style.visibility= "visible";
+				navshoplist.style.opacity= "1";
+				navshoplist.style.transform= "translateY(0px)"
+			});
+			navli[5].addEventListener("mouseleave",function (){
+				let navflag= true;
+				navshoplist.addEventListener("mousemove",function (){
+					navflag= false;
+				});
+				setTimeout(function (){
+					if(navflag){
+						navshoplist.style.visibility= "hidden";
+						navshoplist.style.opacity= "0";
+						navshoplist.style.transform= "translateY(-50px)";
+					}
+				},150);
+			});
+			let topbtn= document.querySelector(".topbtn");
+			document.addEventListener("scroll",function (){
+				if(this.documentElement.scrollTop>1000){
+					topbtn.style.bottom= "150px";
+					topbtn.style.visibility= "visible";
+				}else{
+					topbtn.style.visibility= "hidden";
+					topbtn.style.bottom= "100px";
+				}
+			});
+			let hotcityul= document.querySelector(".hotcity>ul");
+			let lastchs= hotcityul.children[0].children[0];
+			let hotcitybox= document.querySelectorAll(".hotcity>div");
+			hotcitybox[0].style.display= "block";
+			let lastindex= 0;
+			lastchs.classList.add("lastchoose");
+			hotcityul.addEventListener("mouseover",function (e){
+				if(e.target.tagName=="A"){
+					hotcitybox[lastindex].style.display= "none";
+					hotcitybox[parseInt(e.target.dataset.index)].style.display= "block";
+					lastchs.classList.remove("lastchoose");
+					e.target.classList.add("lastchoose");
+					lastchs= e.target;
+					lastindex= parseInt(e.target.dataset.index);
+				}
+			});
+			let monthul= document.querySelector(".month>ul");
+			let lastmontha= monthul.children[0].children[0];
+			let monthimgbox= document.querySelectorAll(".monthimg>div");
+			for(let i= 0;i<monthimgbox.length;i++){
+				monthimgbox[i].style.backgroundImage= `url(../img/monthimg1-${i+1}.jpg)`;
+			}
+			lastmontha.style.background= "green";
+			lastmontha.style.color= "white";
+			monthul.addEventListener("mouseover",function (e){
+				if(e.target.tagName==="A"){
+					lastmontha.style.background= "none";
+					lastmontha.style.color= "black";	
+					e.target.style.background= "green";
+					e.target.style.color= "white";
+					lastmontha= e.target;
+					for(let i= 0;i<monthimgbox.length;i++){
+						monthimgbox[i].style.backgroundImage= `url(../img/monthimg${parseInt(e.target.dataset.monthimg)+1}-${i+1}.jpg)`;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
